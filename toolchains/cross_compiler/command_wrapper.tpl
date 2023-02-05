@@ -1,0 +1,1 @@
+{command_prefix}external{sep}{compiler_workspace}{sep}{bin_subfolder}{sep}{binary_prefix}{binary_target}{tool_platform_suffix} {arg_passthrough}

@@ -1,0 +1,7 @@
+bazel_dep(name = "rules_bzlmodrio_toolchains", version = "")
+local_path_override(
+    module_name = "rules_bzlmodrio_toolchains",
+    path = "..",
+)
+
+bazel_dep(name = "googletest", version = "1.11.0")

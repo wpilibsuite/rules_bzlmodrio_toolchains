@@ -1,0 +1,19 @@
+load("//:defines_helper.bzl", "defines_helper")
+
+# print(defines_helper(True, True, True))
+# print(defines_helper(False, False, False))
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
+    defines = select(defines_helper()),
+)
+
+cc_test(
+    name = "test",
+    srcs = ["test.cpp"],
+    defines = select(defines_helper()),
+    deps = [
+        "@googletest//:gtest_main",
+    ],
+)

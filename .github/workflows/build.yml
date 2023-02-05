@@ -1,0 +1,113 @@
+name: Build example project
+on: [pull_request, push]
+jobs:
+  build_native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build standard, native
+        - { name: "windows - native",        os: windows-latest, command: "test",  config: "--config=windows", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - native",        os: ubuntu-latest,  command: "test",  config: "--config=linux",   bazel_options: "",                                 }
+        - { name: "macos   - native",        os: macos-latest,   command: "test",  config: "--config=macos --test_tag_filters=-bazelrio-cpp-test",   bazel_options: "",                                 }
+
+        # Build bzlmod, native
+        - { name: "windows - bzlmod native", os: windows-latest, command: "test",  config: "--enable_bzlmod --config=windows", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod native", os: ubuntu-latest,  command: "test",  config: "--enable_bzlmod --config=linux",   bazel_options: "",                                 }
+        - { name: "macos   - bzlmod native", os: macos-latest,   command: "test",  config: "--enable_bzlmod --config=macos --test_tag_filters=-bazelrio-cpp-test",   bazel_options: "",                                 }
+
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - run: bazel ${{ matrix.bazel_options }} build -k ${{ matrix.config }} --verbose_failures --config=remote //... @rules_bzlmodrio_toolchains//...
+      working-directory: tests
+    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+      working-directory: tests
+
+      
+  build_roborio:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build standard, roborio
+        - { name: "windows - roborio",         os: windows-latest, command: "build", config: "--config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - roborio",         os: ubuntu-latest,  command: "build", config: "--config=roborio", bazel_options: "",                                 }
+        - { name: "macos   - roborio",         os: macos-latest,   command: "build", config: "--config=roborio", bazel_options: "",                                 }
+        
+        # Build bzlmod, roborio
+      # - { name: "windows - bzlmod roborio",  os: windows-latest, command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod roborio",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod roborio",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+      working-directory: tests
+
+  build_bullseye32:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build standard, bullseye32
+        - { name: "windows - bullseye32",         os: windows-latest, command: "build", config: "--config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bullseye32",         os: ubuntu-latest,  command: "build", config: "--config=bullseye32", bazel_options: "",                                 }
+      # - { name: "macos   - bullseye32",         os: macos-latest,   command: "build", config: "--config=bullseye32", bazel_options: "",                                 }
+        
+        # Build bzlmod, bullseye32
+      # - { name: "windows - bzlmod bullseye32",  os: windows-latest, command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod bullseye32",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
+      # - { name: "macos   - bzlmod bullseye32",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+      working-directory: tests
+
+
+  build_bullseye64:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build standard, bullseye32:
+        - { name: "windows - bullseye64",         os: windows-latest, command: "build", config: "--config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bullseye64",         os: ubuntu-latest,  command: "build", config: "--config=bullseye64", bazel_options: "",                                 }
+      # - { name: "macos   - bullseye64",         os: macos-latest,   command: "build", config: "--config=bullseye32", bazel_options: "",                                 }
+        
+        # Build bzlmod, bullseye32:
+      # - { name: "windows - bzlmod bullseye64",  os: windows-latest, command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod bullseye64",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
+      # - { name: "macos   - bzlmod bullseye64",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+      working-directory: tests
+
+      
+  build_raspi32:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build standard, bullseye32:
+        - { name: "windows - raspi32",         os: windows-latest, command: "build", config: "--config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - raspi32",         os: ubuntu-latest,  command: "build", config: "--config=raspi32", bazel_options: "",                                 }
+      # - { name: "macos   - raspi32",         os: macos-latest,   command: "build", config: "--config=raspi32", bazel_options: "",                                 }
+        
+        # Build bzlmod, bullseye32:
+      # - { name: "windows - bzlmod raspi32",  os: windows-latest, command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod raspi32",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
+      # - { name: "macos   - bzlmod raspi32",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+      working-directory: tests
