@@ -1,0 +1,79 @@
+name: Publish Module
+on:
+  workflow_dispatch:
+  push:
+    tags:
+    - '*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish_module:
+    name: "Publish Module"
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout repository
+    - uses: actions/checkout@v3
+      with:
+        path: rules/rules_bzlmodrio_toolchains
+
+    - name: Create Archive
+      run: git archive HEAD --format=tar.gz --output="rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz"
+      working-directory: rules/rules_bzlmodrio_toolchains
+
+    - name: Setup archive name
+      run: echo "ARCHIVE_NAME=rules/rules_bzlmodrio_toolchains/rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz" >> "$GITHUB_ENV"
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: "${{ env.ARCHIVE_NAME }}"
+
+
+    # Checkout gentool
+    - uses: actions/checkout@v3
+      with:
+        repository: 'bzlmodRio/gentool.git'
+        fetch-depth: 0
+        path: gentool
+        ref: refactor_dev
+
+    # Checkout BCR
+    - uses: actions/checkout@v3
+      with:
+        repository: 'bzlmodRio/bazel-central-registry.git'
+        fetch-depth: 0
+        path: bazel-central-registry
+        ref: bzlmodrio
+
+    # Run publishing
+    - run: bazel run //:publish
+      working-directory: rules/rules_bzlmodrio_toolchains/generate
+
+    # Create pull requests
+    - name: Create Gentool Pull Request
+      uses: peter-evans/create-pull-request@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
+      with:
+        path: gentool
+        base: refactor_dev
+        token: ${{ secrets.AUTO_UPDATE_KEY }}
+        reviewers: pjreiniger
+        branch: autoupdate/rules_bzlmodrio_toolchains_update
+        title: "Auto-update latest rules_bzlmodrio_toolchains module release"
+
+    - name: Create BCR Pull Request
+      uses: peter-evans/create-pull-request@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
+      with:
+        path: bazel-central-registry
+        base: bzlmodrio
+        token: ${{ secrets.AUTO_UPDATE_KEY }}
+        reviewers: pjreiniger
+        branch: autoupdate/rules_wpi_styleguid_update
+        title: "Auto-update latest rules_bzlmodrio_toolchains module release"

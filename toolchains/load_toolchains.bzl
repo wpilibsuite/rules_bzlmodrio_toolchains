@@ -2,16 +2,6 @@ load("//toolchains:configure_cross_compiler.bzl", "configure_cross_compiler")
 
 def load_toolchains():
     configure_cross_compiler(
-        name = "local_bullseye_64",
-        compiler = "bullseye-64",
-        bin_subfolder = "bullseye/bin",
-        bin_prefix = "aarch64-bullseye-linux-gnu-",
-        sysroot_subfolder = "bullseye/aarch64-linux-gnu/sysroot",
-        cxx_version = "10",
-        sysroot_include_folder = "aarch64-linux-gnu",
-        repo_shortname = "bullseye_64",
-    )
-    configure_cross_compiler(
         name = "local_bullseye_32",
         compiler = "bullseye-32",
         bin_subfolder = "bullseye/bin",
@@ -20,6 +10,16 @@ def load_toolchains():
         cxx_version = "10",
         sysroot_include_folder = "arm-linux-gnueabihf",
         repo_shortname = "bullseye_32",
+    )
+    configure_cross_compiler(
+        name = "local_bullseye_64",
+        compiler = "bullseye-64",
+        bin_subfolder = "bullseye/bin",
+        bin_prefix = "aarch64-bullseye-linux-gnu-",
+        sysroot_subfolder = "bullseye/aarch64-linux-gnu/sysroot",
+        cxx_version = "10",
+        sysroot_include_folder = "aarch64-linux-gnu",
+        repo_shortname = "bullseye_64",
     )
     configure_cross_compiler(
         name = "local_raspi_32",

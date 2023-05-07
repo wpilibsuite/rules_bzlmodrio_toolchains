@@ -6,6 +6,7 @@ module(
 
 bazel_dep(name = "platforms", version = "0.0.6")
 bazel_dep(name = "rules_cc", version = "0.0.4")
+bazel_dep(name = "bazel_skylib", version = "1.4.1")
 
 deps = use_extension("//:maven_deps.bzl", "deps")
 use_repo(

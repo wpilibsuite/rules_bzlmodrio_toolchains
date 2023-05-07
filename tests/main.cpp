@@ -20,15 +20,13 @@
 #error "This shouldn't happen"
 #endif
 
-
-
 #include <iostream>
 
 int main() {
-//     std::cout << "Hello world: " << IS_ROBORIO_TEST << std::endl;
-// #ifdef __FRC_ROBORIO__
-//     std::cout << "Roborio: " << __FRC_ROBORIO__ << std::endl;
-// #endif
+  //     std::cout << "Hello world: " << IS_ROBORIO_TEST << std::endl;
+  // #ifdef __FRC_ROBORIO__
+  //     std::cout << "Roborio: " << __FRC_ROBORIO__ << std::endl;
+  // #endif
 
-    return 0;
+  return 0;
 }

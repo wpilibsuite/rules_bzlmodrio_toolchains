@@ -12,7 +12,7 @@ http_archive(
 
 local_repository(
     name = "bzlmodrio-gentool",
-    path = "../../gentool",
+    path = "../../../gentool",
 )
 
 load("@rules_python//python:pip.bzl", "pip_parse")

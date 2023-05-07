@@ -1,0 +1,32 @@
+cppHeaderFileInclude {
+  \.h$
+  \.hpp$
+  \.inc$
+  \.inl$
+}
+
+licenseUpdateExclude {
+  /
+}
+
+cppSrcFileInclude {
+  \.cpp$
+}
+
+modifiableFileExclude {
+}
+
+generatedFileExclude {
+  bazel-bin/
+  bazel-out/
+  bazel-testlogs/
+  bazel-tests
+  BUILD.bazel
+  jni/arm-linux-jni/
+}
+
+repoRootNameOverride {
+}
+
+includeOtherLibs {
+}
