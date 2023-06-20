@@ -39,20 +39,24 @@ register_toolchains(
 # Styleguide
 http_archive(
     name = "rules_wpiformat",
-    sha256 = "b5a2a5cdff940e4dcd9d0188d5579cd260d2d96571b74b087acb701617bd27ad",
+    sha256 = "3e5edc1516a8e2edb0c89d7e9e5b90f66e7fb6ec1dccd8c9bb2c12589a746176",
     url = "https://github.com/bzlmodRio/rules_wpiformat/releases/download/2022.30/rules_wpiformat-2022.30.tar.gz",
 )
 
 http_archive(
     name = "rules_python",
-    sha256 = "48a838a6e1983e4884b26812b2c748a35ad284fd339eb8e2a6f3adf95307fbcd",
-    strip_prefix = "rules_python-0.16.2",
-    url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.16.2.tar.gz",
+    sha256 = "94750828b18044533e98a129003b6a68001204038dc4749f40b195b24c38f49f",
+    strip_prefix = "rules_python-0.21.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.21.0/rules_python-0.21.0.tar.gz",
 )
 
 load("@rules_wpiformat//dependencies:load_rule_dependencies.bzl", "load_wpiformat_rule_dependencies")
 
 load_wpiformat_rule_dependencies()
+
+load("@rules_wpiformat//dependencies:load_transitive_dependencies.bzl", "load_wpiformat_transitive_dependencies")
+
+load_wpiformat_transitive_dependencies()
 
 load("@rules_wpiformat//dependencies:load_dependencies.bzl", "load_wpiformat_dependencies")
 

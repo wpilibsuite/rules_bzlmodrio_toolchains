@@ -2,20 +2,20 @@ def configure_cross_compiler_impl(repository_ctx):
     compiler_name = repository_ctx.attr.compiler
 
     substitutions = {
+        "{arg_passthrough}": '"$@"',
         "{bin_subfolder}": repository_ctx.attr.bin_subfolder,
         "{binary_prefix}": repository_ctx.attr.bin_prefix,
-        "{sysroot}": repository_ctx.attr.sysroot_subfolder,
-        "{cxx_version}": repository_ctx.attr.cxx_version,
-        "{sysroot_include_folder}": repository_ctx.attr.sysroot_include_folder,
-        "{compiler}": compiler_name,
         "{command_prefix}": "",
+        "{compiler}": compiler_name,
+        "{cxx_version}": repository_ctx.attr.cxx_version,
         "{exe_suffix}": "",
-        "{wrapper_extension}": "",
-        "{tool_platform_suffix}": "",
-        "{sep}": "/",
-        "{arg_passthrough}": '"$@"',
-        "{repo_short_name}": repository_ctx.attr.repo_shortname,
         "{repo_short_name_no_dash}": repository_ctx.attr.repo_shortname.replace("_", ""),
+        "{repo_short_name}": repository_ctx.attr.repo_shortname,
+        "{sep}": "/",
+        "{sysroot_include_folder}": repository_ctx.attr.sysroot_include_folder,
+        "{sysroot}": repository_ctx.attr.sysroot_subfolder,
+        "{tool_platform_suffix}": "",
+        "{wrapper_extension}": "",
     }
 
     if repository_ctx.os.name.startswith("windows"):
@@ -74,12 +74,12 @@ configure_cross_compiler = repository_rule(
     implementation = configure_cross_compiler_impl,
     configure = True,
     attrs = {
-        "compiler": attr.string(mandatory = True),
-        "bin_subfolder": attr.string(mandatory = True),
         "bin_prefix": attr.string(mandatory = True),
-        "sysroot_subfolder": attr.string(mandatory = True),
+        "bin_subfolder": attr.string(mandatory = True),
+        "compiler": attr.string(mandatory = True),
         "cxx_version": attr.string(mandatory = True),
-        "sysroot_include_folder": attr.string(mandatory = True),
         "repo_shortname": attr.string(mandatory = True),
+        "sysroot_include_folder": attr.string(mandatory = True),
+        "sysroot_subfolder": attr.string(mandatory = True),
     },
 )

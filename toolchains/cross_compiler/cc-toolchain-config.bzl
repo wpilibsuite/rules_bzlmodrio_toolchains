@@ -153,12 +153,18 @@ def _impl(ctx):
         name = "compiler_param_file",
     )
 
+    archive_param_file_feature = feature(
+        name = "archive_param_file",
+        enabled = True,
+    )
+
     features = [
         unfiltered_compile_flags_feature,
         default_link_flags_feature,
         default_compile_flags_feature,
         sysroot_feature,
         compiler_param_feature,
+        archive_param_file_feature,
     ]
 
     return cc_common.create_cc_toolchain_config_info(
@@ -180,9 +186,9 @@ def _impl(ctx):
 
 cc_toolchain_config = rule(
     attrs = {
+        "cxx_builtin_include_directories": attr.string_list(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),
         "wrapper_extension": attr.string(mandatory = True),
-        "cxx_builtin_include_directories": attr.string_list(mandatory = True),
     },
     provides = [CcToolchainConfigInfo],
     implementation = _impl,
