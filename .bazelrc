@@ -5,6 +5,12 @@ build:windows --copt=/std:c++20
 build:windows --copt=/Zc:preprocessor
 build:windows --copt=/wd5105
 
+# Windows Arm
+build:windows_arm --copt=/std:c++20
+build:windows_arm --copt=/Zc:preprocessor
+build:windows_arm --copt=/wd5105
+build:windows_arm --cpu=x64_arm64_windows
+
 # Linux
 build:linux --copt=-std=c++20
 build:linux --linkopt=-pthread
@@ -13,6 +19,7 @@ build:linux --linkopt=-pthread
 build:macos --copt=-std=c++20
 
 # Roborio
+build:roborio --incompatible_enable_cc_toolchain_resolution
 build:roborio --copt=-std=c++20
 build:roborio --platforms=@rules_bzlmodrio_toolchains//platforms/roborio
 build:roborio --build_tag_filters=-no-roborio
@@ -20,6 +27,7 @@ build:roborio --features=compiler_param_file
 build:roborio --platform_suffix=roborio
 
 # bullseye32
+build:bullseye32 --incompatible_enable_cc_toolchain_resolution
 build:bullseye32 --copt=-std=c++20
 build:bullseye32 --platforms=@rules_bzlmodrio_toolchains//platforms/bullseye32
 build:bullseye32 --build_tag_filters=-no-bullseye
@@ -27,6 +35,7 @@ build:bullseye32 --features=compiler_param_file
 build:bullseye32 --platform_suffix=bullseye32
 
 # bullseye64
+build:bullseye64 --incompatible_enable_cc_toolchain_resolution
 build:bullseye64 --copt=-std=c++20
 build:bullseye64 --platforms=@rules_bzlmodrio_toolchains//platforms/bullseye64
 build:bullseye64 --build_tag_filters=-no-bullseye
@@ -34,6 +43,7 @@ build:bullseye64 --features=compiler_param_file
 build:bullseye64 --platform_suffix=bullseye64
 
 # rasppi
+build:raspi32 --incompatible_enable_cc_toolchain_resolution
 build:raspi32 --copt=-std=c++20
 build:raspi32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspi32
 build:raspi32 --build_tag_filters=-no-raspi
@@ -43,6 +53,5 @@ build:raspi32 --platform_suffix=raspi32
 # Global
 import .bazelrc-buildbuddy
 test --test_output=errors
-build --incompatible_enable_cc_toolchain_resolution
 build --java_language_version=11
 build --registry=https://raw.githubusercontent.com/pjreiniger/bazel-central-registry/bzlmodrio/
