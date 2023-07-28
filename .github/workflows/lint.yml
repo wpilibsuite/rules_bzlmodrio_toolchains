@@ -6,7 +6,7 @@ jobs:
   lint_python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: psf/black@stable
   wpiformat:
     name: "wpiformat"
@@ -18,7 +18,7 @@ jobs:
             git fetch origin main
             git branch -f main origin/main
         if: github.ref != 'refs/heads/main'
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.10.8'
       - name: Install clang-format

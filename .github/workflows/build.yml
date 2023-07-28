@@ -12,12 +12,12 @@ jobs:
       matrix:
         include:
         # Build standard, native
-        - { name: "windows - native",        os: windows-2019,   command: "test",   config: "--config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - native",        os: windows-2022,   command: "test",   config: "--config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - native",        os: ubuntu-latest,  command: "test",   config: "--config=linux",       bazel_options: "",                                 }
         - { name: "macos   - native",        os: macos-latest,   command: "test",   config: "--config=macos",       bazel_options: "",                                 }
 
         # Build bzlmod, native
-        - { name: "windows - bzlmod native",     os: windows-2019,   command: "test",   config: "--enable_bzlmod --config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - bzlmod native",     os: windows-2022,   command: "test",   config: "--enable_bzlmod --config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod native",     os: ubuntu-latest,  command: "test",   config: "--enable_bzlmod --config=linux",       bazel_options: "",                                 }
         - { name: "macos   - bzlmod native",     os: macos-latest,   command: "test",   config: "--enable_bzlmod --config=macos",       bazel_options: "",                                 }
 
@@ -40,12 +40,12 @@ jobs:
       matrix:
         include:
         # Build standard, roborio
-        - { name: "windows - roborio",         os: windows-2019,   command: "build", config: "--config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - roborio",         os: windows-2022,   command: "build", config: "--config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - roborio",         os: ubuntu-latest,  command: "build", config: "--config=roborio", bazel_options: "",                                 }
         - { name: "macos   - roborio",         os: macos-latest,   command: "build", config: "--config=roborio", bazel_options: "",                                 }
 
         # Build bzlmod, roborio
-      # - { name: "windows - bzlmod roborio",  os: windows-2019,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
+      # - { name: "windows - bzlmod roborio",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod roborio",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
         - { name: "macos   - bzlmod roborio",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
@@ -65,12 +65,12 @@ jobs:
       matrix:
         include:
         # Build standard, bullseye32
-        - { name: "windows - bullseye32",         os: windows-2019,   command: "build", config: "--config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - bullseye32",         os: windows-2022,   command: "build", config: "--config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bullseye32",         os: ubuntu-latest,  command: "build", config: "--config=bullseye32", bazel_options: "",                                 }
         - { name: "macos   - bullseye32",         os: macos-latest,   command: "build", config: "--config=bullseye32", bazel_options: "",                                 }
 
         # Build bzlmod, bullseye32
-        - { name: "windows - bzlmod bullseye32",  os: windows-2019,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - bzlmod bullseye32",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod bullseye32",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
         - { name: "macos   - bzlmod bullseye32",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
@@ -91,12 +91,12 @@ jobs:
       matrix:
         include:
         # Build standard, bullseye32:
-        - { name: "windows - bullseye64",         os: windows-2019,   command: "build", config: "--config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - bullseye64",         os: windows-2022,   command: "build", config: "--config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bullseye64",         os: ubuntu-latest,  command: "build", config: "--config=bullseye64", bazel_options: "",                                 }
         - { name: "macos   - bullseye64",         os: macos-latest,   command: "build", config: "--config=bullseye32", bazel_options: "",                                 }
 
         # Build bzlmod, bullseye32:
-        - { name: "windows - bzlmod bullseye64",  os: windows-2019,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - bzlmod bullseye64",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod bullseye64",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
         - { name: "macos   - bzlmod bullseye64",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
@@ -118,12 +118,12 @@ jobs:
       matrix:
         include:
         # Build standard, bullseye32:
-        - { name: "windows - raspi32",         os: windows-2019,   command: "build", config: "--config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - raspi32",         os: windows-2022,   command: "build", config: "--config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - raspi32",         os: ubuntu-latest,  command: "build", config: "--config=raspi32", bazel_options: "",                                 }
         - { name: "macos   - raspi32",         os: macos-latest,   command: "build", config: "--config=raspi32", bazel_options: "",                                 }
 
         # Build bzlmod, bullseye32:
-        - { name: "windows - bzlmod raspi32",  os: windows-2019,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows - bzlmod raspi32",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod raspi32",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
         - { name: "macos   - bzlmod raspi32",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
