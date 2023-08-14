@@ -68,7 +68,7 @@ jobs:
         base: refactor_dev
         token: ${{ secrets.AUTO_UPDATE_KEY }}
         reviewers: pjreiniger
-        branch: autoupdate/rules_bzlmodrio_toolchains_update
+        branch: autoupdate/rules_bzlmodrio_toolchains_update_${{ env.NEW_VERSION }}
         title: "Auto Update rules_bzlmodrio_toolchains module to '${{ env.NEW_VERSION }}'"
 
     - name: Create BCR Pull Request
@@ -80,5 +80,5 @@ jobs:
         base: bzlmodrio
         token: ${{ secrets.AUTO_UPDATE_KEY }}
         reviewers: pjreiniger
-        branch: autoupdate/rules_bzlmodrio_toolchains_update
+        branch: autoupdate/rules_bzlmodrio_toolchains_update_${{ env.NEW_VERSION }}
         title: "Auto Update latest rules_bzlmodrio_toolchains to '${{ env.NEW_VERSION }}'"
