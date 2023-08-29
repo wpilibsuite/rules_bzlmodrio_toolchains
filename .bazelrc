@@ -1,21 +1,34 @@
 try-import user.bazelrc
 
+# build --javacopt=-Werror
+# build --javacopt=-Xlint:all
+
 # Windows
+build:windows --copt=/W3
+build:windows --copt=/WX
 build:windows --copt=/std:c++20
 build:windows --copt=/Zc:preprocessor
 build:windows --copt=/wd5105
 
 # Windows Arm
+build:windows_arm --copt=/W3
+build:windows_arm --copt=/WX
 build:windows_arm --copt=/std:c++20
 build:windows_arm --copt=/Zc:preprocessor
 build:windows_arm --copt=/wd5105
 build:windows_arm --cpu=x64_arm64_windows
 
 # Linux
+build:linux --copt=-Wall
+build:linux --copt=-Wextra
+build:linux --copt=-Werror
 build:linux --copt=-std=c++20
 build:linux --linkopt=-pthread
 
 # MacOS
+build:macos --copt=-Wall
+build:macos --copt=-Wextra
+build:macos --copt=-Werror
 build:macos --copt=-std=c++20
 
 # Roborio
