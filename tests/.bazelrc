@@ -1,7 +1,7 @@
 try-import user.bazelrc
 
 # build --javacopt=-Werror
-# build --javacopt=-Xlint:all
+build --javacopt=-Xlint:all,-serial,-processing,-options
 
 # Windows
 build:windows --copt=/W3
