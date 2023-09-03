@@ -9,6 +9,7 @@ build:windows --copt=/WX
 build:windows --copt=/std:c++20
 build:windows --copt=/Zc:preprocessor
 build:windows --copt=/wd5105
+build:windows --cxxopt=/wd4267
 
 # Windows Arm
 build:windows_arm --copt=/W3
