@@ -15,9 +15,13 @@ def main():
     with open(file_to_replace, "r") as f:
         contents = f.read()
 
-    contents = re.sub('( +)overall_year = "(.*)"', f'\\1overall_year = "{overall_year}"', contents)
     contents = re.sub(
-        '( +)overall_version = f?"(.*)"', f'\\1overall_version = "{overall_version}"', contents
+        '( +)overall_year = "(.*)"', f'\\1overall_year = "{overall_year}"', contents
+    )
+    contents = re.sub(
+        '( +)overall_version = f?"(.*)"',
+        f'\\1overall_version = "{overall_version}"',
+        contents,
     )
 
     with open(file_to_replace, "w") as f:
