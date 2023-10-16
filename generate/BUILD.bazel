@@ -36,3 +36,12 @@ py_binary(
         "@bzlmodrio-gentool//bazelrio_gentool",
     ],
 )
+
+py_binary(
+    name = "auto_update",
+    srcs = ["auto_update.py"],
+    deps = [
+        ":generate",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
