@@ -1,22 +1,45 @@
 try-import user.bazelrc
 
+# build --javacopt=-Werror
+build --javacopt=-Xlint:all,-serial,-processing,-options
+
 # Windows
+build:windows --copt=/W3
+build:windows --copt=/WX
 build:windows --copt=/std:c++20
 build:windows --copt=/Zc:preprocessor
 build:windows --copt=/wd5105
+build:windows --cxxopt=/wd4267
+build:windows --cxxopt=/wd4244
 
 # Windows Arm
+build:windows_arm --copt=/W3
+build:windows_arm --copt=/WX
 build:windows_arm --copt=/std:c++20
 build:windows_arm --copt=/Zc:preprocessor
 build:windows_arm --copt=/wd5105
+build:windows_arm --cxxopt=/wd4267
+build:windows_arm --cxxopt=/wd4244
 build:windows_arm --cpu=x64_arm64_windows
 
 # Linux
+build:linux --copt=-Wall
+build:linux --copt=-Wextra
+build:linux --copt=-Werror
 build:linux --copt=-std=c++20
 build:linux --linkopt=-pthread
 
 # MacOS
+build:macos --copt=-Wall
+build:macos --copt=-Wextra
+build:macos --copt=-Werror
 build:macos --copt=-std=c++20
+build:macos --cxxopt=-Wno-unused-parameter
+build:macos --cxxopt=-Wno-error=deprecated-declarations
+build:macos --cxxopt=-Wno-error=deprecated-enum-enum-conversion
+build:macos --cxxopt=-Wno-error=deprecated-anon-enum-enum-conversion
+build:macos --cxxopt=-Wno-error=inconsistent-missing-override
+build:macos --cxxopt=-Wno-error=overloaded-virtual
 
 # Roborio
 build:roborio --incompatible_enable_cc_toolchain_resolution

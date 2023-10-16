@@ -4,8 +4,8 @@ module(
     compatibility_level = 2023,
 )
 
-bazel_dep(name = "platforms", version = "0.0.6")
-bazel_dep(name = "rules_cc", version = "0.0.6")
+bazel_dep(name = "platforms", version = "0.0.7")
+bazel_dep(name = "rules_cc", version = "0.0.8")
 bazel_dep(name = "bazel_skylib", version = "1.4.2")
 
 deps = use_extension("//:maven_deps.bzl", "deps")

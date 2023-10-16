@@ -1,0 +1,85 @@
+name: Auto Update
+on:
+  workflow_dispatch:
+  schedule:
+    # Check on Mondays and Thursdays
+    - cron:  '0 0 * * 1,4'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  auto_update_module:
+    name: "Auto Update Module"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Go 1.20.x
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.20.x
+      id: go
+
+    - uses: actions/checkout@v3
+
+    - name: Install Buildifier
+      run: |
+        cd $(mktemp -d)
+        GO111MODULE=on go install github.com/bazelbuild/buildtools/buildifier@latest
+
+    # Checkout repository
+    - uses: actions/checkout@v3
+      with:
+        path: libraries/rules_bzlmodrio_toolchains
+
+    # Checkout gentool
+    - uses: actions/checkout@v3
+      with:
+        repository: 'bzlmodRio/gentool.git'
+        fetch-depth: 0
+        path: gentool
+        ref: refactor_dev
+
+
+    - name: Setup Cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/bzlmod_cache/*.sha256
+        key: ${{ runner.os }}-${{ hashFiles('**/generate/**') }}
+        restore-keys: |
+          ${{ runner.os }}-
+          ${{ runner.os }}
+
+    # Run update
+    - name: Run update
+      run: bazel run //:auto_update
+      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+
+    - name: Generate if changed
+      run: |
+        if [[ $(git --no-pager diff --exit-code HEAD) != '' ]]; then
+          echo "Something changed, need to re-generate"
+          bazel run //:generate
+          buildifier -warnings all --lint=fix -r ..
+        else
+          echo "No changes!"
+        fi;
+      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+
+    - name: Store new version
+      run: echo "NEW_VERSION=$(bazel run //:get_version)" >> $GITHUB_ENV
+      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+
+    # Create pull requests
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
+      with:
+        path: libraries/rules_bzlmodrio_toolchains
+        base: main
+        token: ${{ secrets.AUTO_UPDATE_KEY }}
+        reviewers: pjreiniger
+        branch: autoupdate_${{ env.NEW_VERSION }}
+        title: "Auto Update to '${{ env.NEW_VERSION }}'"
