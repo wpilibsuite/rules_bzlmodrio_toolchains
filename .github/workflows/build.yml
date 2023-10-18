@@ -13,11 +13,13 @@ jobs:
         include:
         # Build standard, native
         - { name: "windows - native",        os: windows-2022,   command: "test",   config: "--config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows arm - native",    os: windows-2022,   command: "build",  config: "--config=windows_arm", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - native",        os: ubuntu-latest,  command: "test",   config: "--config=linux",       bazel_options: "",                                 }
         - { name: "macos   - native",        os: macos-latest,   command: "test",   config: "--config=macos",       bazel_options: "",                                 }
 
         # Build bzlmod, native
         - { name: "windows - bzlmod native",     os: windows-2022,   command: "test",   config: "--enable_bzlmod --config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "windows arm - bzlmod native", os: windows-2022,   command: "build",  config: "--enable_bzlmod --config=windows_arm", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod native",     os: ubuntu-latest,  command: "test",   config: "--enable_bzlmod --config=linux",       bazel_options: "",                                 }
         - { name: "macos   - bzlmod native",     os: macos-latest,   command: "test",   config: "--enable_bzlmod --config=macos",       bazel_options: "",                                 }
 

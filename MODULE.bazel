@@ -1,7 +1,7 @@
 module(
     name = "rules_bzlmodrio_toolchains",
-    version = "2023-7",
-    compatibility_level = 2023,
+    version = "2024-1",
+    compatibility_level = 2024,
 )
 
 bazel_dep(name = "platforms", version = "0.0.7")
