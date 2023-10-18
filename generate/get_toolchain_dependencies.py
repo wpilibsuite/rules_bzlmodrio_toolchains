@@ -66,8 +66,8 @@ def get_toolchain_dependencies():
         ),
     ]
 
-    overall_year = "2023"
-    overall_version = "7"
+    overall_year = "2024"
+    overall_version = "1"
 
     container = ToolchainDependencyContainer(
         "rules_bzlmodrio_toolchains", overall_year, overall_year + "-" + overall_version
