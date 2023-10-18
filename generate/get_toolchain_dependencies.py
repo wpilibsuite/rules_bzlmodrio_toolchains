@@ -19,6 +19,9 @@ class ToolchainDef(NamedTuple):
 
 
 def get_toolchain_dependencies():
+    overall_year = "2024"
+    overall_version = "1"
+
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-aarch64-bullseye-linux-gnu-Toolchain-12.1.0.tgz
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-apple-darwin-Toolchain-12.1.0.tgz
@@ -58,16 +61,13 @@ def get_toolchain_dependencies():
             name="cortexa9_vfpv3-roborio-academic",
             short_name="roborio",
             bin_subfolder="roborio-academic/bin",
-            bin_prefix="arm-frc2023-linux-gnueabi-",
+            bin_prefix="arm-frc" + overall_year + "-linux-gnueabi-",
             sysroot_subfolder="roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
             cxx_version="12",
             sysroot_include_folder="arm-nilrt-linux-gnueabi",
             toolchain_version="12.1.0",
         ),
     ]
-
-    overall_year = "2023"
-    overall_version = "7"
 
     container = ToolchainDependencyContainer(
         "rules_bzlmodrio_toolchains", overall_year, overall_year + "-" + overall_version

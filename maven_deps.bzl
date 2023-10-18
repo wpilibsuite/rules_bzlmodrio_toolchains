@@ -13,22 +13,22 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "bazelrio_bullseye_32_toolchain_macos",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/armhf-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz",
-        sha256 = "736aee2a1aa4c9c7743f949f052e9167c50c80adf6dc80c63020eb2145d14be7",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/armhf-bullseye-2024-x86_64-apple-darwin-Toolchain-10.2.0.tgz",
+        sha256 = "c7febfdb1f01ad7fd7876f8482f50ab4a875aeee77b12818fb97c4a76da789bd",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_bullseye_32_toolchain_linux",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/armhf-bullseye-2023-x86_64-linux-gnu-Toolchain-10.2.0.tgz",
-        sha256 = "49e913cdeb4ad6b800d6829fd4817c83241554dd9548d1b5650423e9122291e9",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/armhf-bullseye-2024-x86_64-linux-gnu-Toolchain-10.2.0.tgz",
+        sha256 = "0e3544b9cd8602f160e47c4b1593199ac6a600bce0dd9028be78a3ee7cc211fe",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_bullseye_32_toolchain_windows",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/armhf-bullseye-2023-x86_64-w64-mingw32-Toolchain-10.2.0.zip",
-        sha256 = "3c5e99446e8fcf668b85d8097de7367d7b119612323d8889a3abc29363ea050a",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/armhf-bullseye-2024-x86_64-w64-mingw32-Toolchain-10.2.0.zip",
+        sha256 = "acc64f989c73c72a15e2296a6deee553458a1580e484e93b8ecd02cbf83e6af8",
         build_file_content = filegroup_all,
     )
 
@@ -36,22 +36,22 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "bazelrio_bullseye_64_toolchain_macos",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz",
-        sha256 = "4c4976dc60e45876b876305d08d9940e448072ec1cbd0e4885747f2056626ebc",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/arm64-bullseye-2024-x86_64-apple-darwin-Toolchain-10.2.0.tgz",
+        sha256 = "2774f894c59f1c390c4990ffaa6412776ea6a9dafc01accb50b8def72b8e6dbe",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_bullseye_64_toolchain_linux",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-linux-gnu-Toolchain-10.2.0.tgz",
-        sha256 = "47278cd34a1d57e5ca821feaa4d9315f9656854e944f3218c8ec61812072b4f1",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/arm64-bullseye-2024-x86_64-linux-gnu-Toolchain-10.2.0.tgz",
+        sha256 = "2cd4345315f165f273e21bbcf04638947fb7530a2859b728a564b6b97a7bea69",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_bullseye_64_toolchain_windows",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-w64-mingw32-Toolchain-10.2.0.zip",
-        sha256 = "ebc0061cb908368bfaa3955ac9767fe08bbb07c7a8a61f33c43b28b90bd6d8b5",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/arm64-bullseye-2024-x86_64-w64-mingw32-Toolchain-10.2.0.zip",
+        sha256 = "6ef1c81fe3fbc5578db111087a3715746bcdc59e67f10a50788c363ab5fb1368",
         build_file_content = filegroup_all,
     )
 
@@ -59,22 +59,22 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "bazelrio_raspi_32_toolchain_macos",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/armhf-raspi-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz",
-        sha256 = "7a547cb200c9c7ceb0d1f42c73a9fa88950ec66870063c65d21d5684bfeee78a",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/armhf-raspi-bullseye-2024-x86_64-apple-darwin-Toolchain-10.2.0.tgz",
+        sha256 = "2725fd7d1582d8503a2fdd1f7402e579cbbd1091b820b0fd50100d2205b78ba7",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_raspi_32_toolchain_linux",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/armhf-raspi-bullseye-2023-x86_64-linux-gnu-Toolchain-10.2.0.tgz",
-        sha256 = "477d77e13d3ac4a94cd56302e597578a453e8be465e3ef13a4339e2f7fdcee40",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/armhf-raspi-bullseye-2024-x86_64-linux-gnu-Toolchain-10.2.0.tgz",
+        sha256 = "a8b19b6068fcedcae033d3bbefac9ae4a26139ab276304fe49302e4a992a9f7d",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_raspi_32_toolchain_windows",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/armhf-raspi-bullseye-2023-x86_64-w64-mingw32-Toolchain-10.2.0.zip",
-        sha256 = "9a4f5864ce25c9450e421e64af166c6f0198a6282c64535d51c690317ee4a0ed",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/armhf-raspi-bullseye-2024-x86_64-w64-mingw32-Toolchain-10.2.0.zip",
+        sha256 = "69429dc49f2571b2c933e751b8a25f7a3a45b285b3ae49bc6e9b01e065fc8630",
         build_file_content = filegroup_all,
     )
 
@@ -82,22 +82,22 @@ def __setup_toolchains_dependencies(mctx):
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_macos",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
-        sha256 = "345bcbbc81958ad91dc87f51a94f1a709fdd7001b7f2995eaa016c04822f6d17",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/cortexa9_vfpv3-roborio-academic-2024-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
+        sha256 = "95eed7503f92e17f0e93ed6e5412d3ac6297b6a15773c90ef1a590f47f6fa467",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_linux",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
-        sha256 = "f3d48103c311e07e4da5e6f2cae426d34d582b627c342f20407530f8cb1c93a1",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/cortexa9_vfpv3-roborio-academic-2024-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
+        sha256 = "10349791e4f9fa33100ee52a84e7f9ba4df581963818334771253369b0d12061",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
         "bazelrio_roborio_toolchain_windows",
-        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
-        sha256 = "36b94b972fd017f6fd15a57ddbaa20e18616d72f7de16d9c81c03a1e58cb8475",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2024-1/cortexa9_vfpv3-roborio-academic-2024-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
+        sha256 = "b367ab5d451603a97cd18a76193e860640230013a99baf216bb97dda1c353990",
         build_file_content = filegroup_all,
     )
 

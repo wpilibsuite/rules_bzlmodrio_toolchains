@@ -35,7 +35,7 @@ def load_toolchains():
         name = "local_roborio",
         compiler = "roborio",
         bin_subfolder = "roborio-academic/bin",
-        bin_prefix = "arm-frc2023-linux-gnueabi-",
+        bin_prefix = "arm-frc2024-linux-gnueabi-",
         sysroot_subfolder = "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
         cxx_version = "12",
         sysroot_include_folder = "arm-nilrt-linux-gnueabi",

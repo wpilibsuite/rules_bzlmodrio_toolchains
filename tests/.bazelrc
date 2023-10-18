@@ -9,6 +9,7 @@ build:windows --copt=/WX
 build:windows --copt=/std:c++20
 build:windows --copt=/Zc:preprocessor
 build:windows --copt=/wd5105
+build:windows --cxxopt=/wd4146
 build:windows --cxxopt=/wd4267
 build:windows --cxxopt=/wd4244
 
@@ -18,6 +19,7 @@ build:windows_arm --copt=/WX
 build:windows_arm --copt=/std:c++20
 build:windows_arm --copt=/Zc:preprocessor
 build:windows_arm --copt=/wd5105
+build:windows_arm --cxxopt=/wd4146
 build:windows_arm --cxxopt=/wd4267
 build:windows_arm --cxxopt=/wd4244
 build:windows_arm --cpu=x64_arm64_windows
