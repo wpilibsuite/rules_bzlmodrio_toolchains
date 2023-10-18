@@ -30,7 +30,7 @@ jobs:
     # Checkout repository
     - uses: actions/checkout@v3
       with:
-        path: libraries/rules_bzlmodrio_toolchains
+        path: rules/rules_bzlmodrio_toolchains
 
     # Checkout gentool
     - uses: actions/checkout@v3
@@ -55,7 +55,7 @@ jobs:
     # Run update
     - name: Run update
       run: bazel run //:auto_update
-      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+      working-directory: rules/rules_bzlmodrio_toolchains/generate
 
     - name: Generate if changed
       run: |
@@ -66,11 +66,11 @@ jobs:
         else
           echo "No changes!"
         fi;
-      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+      working-directory: rules/rules_bzlmodrio_toolchains/generate
 
     - name: Store new version
       run: echo "NEW_VERSION=$(bazel run //:get_version)" >> $GITHUB_ENV
-      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+      working-directory: rules/rules_bzlmodrio_toolchains/generate
 
     # Create pull requests
     - name: Create Pull Request
@@ -78,7 +78,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
       with:
-        path: libraries/rules_bzlmodrio_toolchains
+        path: rules/rules_bzlmodrio_toolchains
         base: main
         token: ${{ secrets.AUTO_UPDATE_KEY }}
         reviewers: pjreiniger
