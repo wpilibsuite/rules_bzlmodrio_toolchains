@@ -55,7 +55,7 @@ jobs:
 
     - name: Store version
       run: echo "NEW_VERSION=$(bazel run //:get_version)" >> $GITHUB_ENV
-      working-directory: libraries/rules_bzlmodrio_toolchains/generate
+      working-directory: rules/rules_bzlmodrio_toolchains/generate
 
 
     # Create pull requests
