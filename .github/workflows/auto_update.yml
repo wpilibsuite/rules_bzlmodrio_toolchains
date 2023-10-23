@@ -2,8 +2,8 @@ name: Auto Update
 on:
   workflow_dispatch:
   schedule:
-    # Check on Mondays and Thursdays
-    - cron:  '0 0 * * 1,4'
+    # Check everyday at 20:00 UTC
+    - cron:  '0 20 * * *'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
