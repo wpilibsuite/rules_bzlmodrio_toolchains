@@ -63,6 +63,10 @@ jobs:
           echo "Something changed, need to re-generate"
           bazel run //:generate
           buildifier -warnings all --lint=fix -r ..
+          cd ..
+          bazel build //... --nobuild --enable_bzlmod --lockfile_mode=update
+          cd tests
+          bazel build //... --nobuild --enable_bzlmod --lockfile_mode=update
         else
           echo "No changes!"
         fi;
