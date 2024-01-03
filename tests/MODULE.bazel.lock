@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 3,
-  "moduleFileHash": "323cc22a4b25bc9d43b0c61fe308d2d0600780e580af63c10a5f88e2e98751e4",
+  "moduleFileHash": "4c6940c6dc069dafd569e4801d0d490d5705702f2f3775d418af246c6d23bce3",
   "flags": {
     "cmdRegistries": [
       "https://raw.githubusercontent.com/pjreiniger/bazel-central-registry/bzlmodrio/"
@@ -14,7 +14,7 @@
   },
   "localOverrideHashes": {
     "bazel_tools": "0cc38516259ab87144b82461dd874e139f093d8e356667c3a3c5a52441ac448f",
-    "rules_bzlmodrio_toolchains": "4479aad521d4d7905e8b1f5afc592a4c3067612058d3150d451fa96adf3ad85a"
+    "rules_bzlmodrio_toolchains": "ea2d77344af5c9f61b9941e1827af73ace0eb302eb9220d7cbe2b64ad8db69ce"
   },
   "moduleDepGraph": {
     "<root>": {

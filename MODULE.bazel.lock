@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 3,
-  "moduleFileHash": "4479aad521d4d7905e8b1f5afc592a4c3067612058d3150d451fa96adf3ad85a",
+  "moduleFileHash": "ea2d77344af5c9f61b9941e1827af73ace0eb302eb9220d7cbe2b64ad8db69ce",
   "flags": {
     "cmdRegistries": [
       "https://raw.githubusercontent.com/pjreiniger/bazel-central-registry/bzlmodrio/"
