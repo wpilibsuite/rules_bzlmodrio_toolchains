@@ -1,13 +1,13 @@
-workspace(name = "bzlmodrio_ni_gentool")
+workspace(name = "rules_bzlmodrio_toolchains-gentool")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # Python, for gentool
 http_archive(
     name = "rules_python",
-    sha256 = "497ca47374f48c8b067d786b512ac10a276211810f4a580178ee9b9ad139323a",
+    sha256 = "0a8003b044294d7840ac7d9d73eef05d6ceb682d7516781a4ec62eeb34702578",
     strip_prefix = "rules_python-0.16.1",
-    url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.16.1.tar.gz",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.16.1/rules_python-0.16.1.tar.gz",
 )
 
 local_repository(
