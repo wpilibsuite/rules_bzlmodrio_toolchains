@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Checkout repository
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         path: rules/rules_bzlmodrio_toolchains
 
@@ -34,7 +34,7 @@ jobs:
 
 
     # Checkout gentool
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         repository: 'bzlmodRio/gentool.git'
         fetch-depth: 0
@@ -42,7 +42,7 @@ jobs:
         ref: refactor_dev
 
     # Checkout BCR
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         repository: 'bzlmodRio/bazel-central-registry.git'
         fetch-depth: 0
