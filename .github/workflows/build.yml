@@ -15,25 +15,27 @@ jobs:
         - { name: "windows - native",        os: windows-2022,   command: "test",   config: "--noenable_bzlmod --config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "windows arm - native",    os: windows-2022,   command: "build",  config: "--noenable_bzlmod --config=windows_arm", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - native",        os: ubuntu-latest,  command: "test",   config: "--noenable_bzlmod --config=linux",       bazel_options: "",                                 }
-        - { name: "macos   - native",        os: macos-latest,   command: "test",   config: "--noenable_bzlmod --config=macos",       bazel_options: "",                                 }
+        - { name: "macos   - native",        os: macos-12,   command: "test",   config: "--noenable_bzlmod --config=macos",       bazel_options: "",                                 }
 
         # Build bzlmod, native
         - { name: "windows - bzlmod native",     os: windows-2022,   command: "test",   config: "--enable_bzlmod --config=windows",     bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "windows arm - bzlmod native", os: windows-2022,   command: "build",  config: "--enable_bzlmod --config=windows_arm", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod native",     os: ubuntu-latest,  command: "test",   config: "--enable_bzlmod --config=linux",       bazel_options: "",                                 }
-        - { name: "macos   - bzlmod native",     os: macos-latest,   command: "test",   config: "--enable_bzlmod --config=macos",       bazel_options: "",                                 }
+        - { name: "macos   - bzlmod native",     os: macos-12,   command: "test",   config: "--enable_bzlmod --config=macos",       bazel_options: "",                                 }
 
     name: "Build - ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
-      with: { python-version: '3.10.8' }
+      with: { python-version: '3.11' }
     - run: bazel ${{ matrix.bazel_options }} build -k ${{ matrix.config }} --config=remote @rules_bzlmodrio_toolchains//...
       working-directory: tests
-    - run: bazel ${{ matrix.bazel_options }} build -k ${{ matrix.config }} --verbose_failures --config=remote //... || true
+    - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
+      run: bazel ${{ matrix.bazel_options }} build -k ${{ matrix.config }} --verbose_failures --config=remote //... || true
       working-directory: tests
-    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
       working-directory: tests
 
 
@@ -45,22 +47,23 @@ jobs:
         # Build non-bzlmod, roborio
         - { name: "windows - roborio",         os: windows-2022,   command: "build", config: "--noenable_bzlmod --config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - roborio",         os: ubuntu-latest,  command: "build", config: "--noenable_bzlmod --config=roborio", bazel_options: "",                                 }
-        - { name: "macos   - roborio",         os: macos-latest,   command: "build", config: "--noenable_bzlmod --config=roborio", bazel_options: "",                                 }
+        - { name: "macos   - roborio",         os: macos-12,   command: "build", config: "--noenable_bzlmod --config=roborio", bazel_options: "",                                 }
 
         # Build bzlmod, roborio
       # - { name: "windows - bzlmod roborio",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod roborio",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
-        - { name: "macos   - bzlmod roborio",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod roborio",  os: macos-12,   command: "build", config: "--enable_bzlmod --config=roborio", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
-      with: { python-version: '3.10.8' }
+      with: { python-version: '3.11' }
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote || true
       working-directory: tests
-    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
       working-directory: tests
 
   build_bullseye32:
@@ -71,22 +74,23 @@ jobs:
         # Build non-bzlmod, bullseye32
         - { name: "windows - bullseye32",         os: windows-2022,   command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bullseye32",         os: ubuntu-latest,  command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "",                                 }
-        - { name: "macos   - bullseye32",         os: macos-latest,   command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "",                                 }
+        - { name: "macos   - bullseye32",         os: macos-12,   command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "",                                 }
 
         # Build bzlmod, bullseye32
         - { name: "windows - bzlmod bullseye32",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod bullseye32",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
-        - { name: "macos   - bzlmod bullseye32",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod bullseye32",  os: macos-12,   command: "build", config: "--enable_bzlmod --config=bullseye32", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
-      with: { python-version: '3.10.8' }
+      with: { python-version: '3.11' }
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote || true
       working-directory: tests
-    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
       working-directory: tests
 
 
@@ -98,22 +102,23 @@ jobs:
         # Build non-bzlmod, bullseye32:
         - { name: "windows - bullseye64",         os: windows-2022,   command: "build", config: "--noenable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bullseye64",         os: ubuntu-latest,  command: "build", config: "--noenable_bzlmod --config=bullseye64", bazel_options: "",                                 }
-        - { name: "macos   - bullseye64",         os: macos-latest,   command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "",                                 }
+        - { name: "macos   - bullseye64",         os: macos-12,   command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "",                                 }
 
         # Build bzlmod, bullseye32:
         - { name: "windows - bzlmod bullseye64",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod bullseye64",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
-        - { name: "macos   - bzlmod bullseye64",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod bullseye64",  os: macos-12,   command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
-      with: { python-version: '3.10.8' }
+      with: { python-version: '3.11' }
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote || true
       working-directory: tests
-    - run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=remote
       working-directory: tests
 
 
@@ -126,12 +131,12 @@ jobs:
         # Build non-bzlmod, bullseye32:
         - { name: "windows - raspi32",         os: windows-2022,   command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - raspi32",         os: ubuntu-latest,  command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "",                                 }
-        - { name: "macos   - raspi32",         os: macos-latest,   command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "",                                 }
+        - { name: "macos   - raspi32",         os: macos-12,   command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "",                                 }
 
         # Build bzlmod, bullseye32:
         - { name: "windows - bzlmod raspi32",  os: windows-2022,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod raspi32",  os: ubuntu-latest,  command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
-        - { name: "macos   - bzlmod raspi32",  os: macos-latest,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod raspi32",  os: macos-12,   command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     steps:
