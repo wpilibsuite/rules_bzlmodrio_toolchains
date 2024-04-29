@@ -12,7 +12,7 @@ concurrency:
 jobs:
   publish_module:
     name: "Publish Module"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     # Checkout repository
     - uses: actions/checkout@v4
