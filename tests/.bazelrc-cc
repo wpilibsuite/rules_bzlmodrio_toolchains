@@ -17,7 +17,7 @@ build:windows_arm --copt=/wd5105
 build:windows_arm --cxxopt=/wd4146
 build:windows_arm --cxxopt=/wd4267
 build:windows_arm --cxxopt=/wd4244
-build:windows_arm --cpu=x64_arm64_windows
+build:windows_arm --cpu=arm64_windows
 
 # Linux
 build:linux --copt=-Wall

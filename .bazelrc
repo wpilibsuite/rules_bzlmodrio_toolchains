@@ -3,6 +3,9 @@ import .bazelrc-cc
 import .bazelrc-java
 import .bazelrc-buildbuddy
 
+build --test_env=LD_LIBRARY_PATH=.
+build --test_env=DYLD_LIBRARY_PATH=.
+
 # Roborio
 build:roborio --platforms=@rules_bzlmodrio_toolchains//platforms/roborio
 build:roborio --build_tag_filters=-no-roborio
