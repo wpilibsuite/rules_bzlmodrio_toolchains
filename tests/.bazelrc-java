@@ -2,6 +2,6 @@
 build --javacopt=-Xlint:all,-processing
 
 build --java_language_version=17
-build --java_runtime_version=roboriojdk_17
+build --java_runtime_version=remotejdk_17
 build --tool_java_language_version=11
 build --tool_java_runtime_version=remotejdk_11
