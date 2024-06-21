@@ -64,9 +64,9 @@ jobs:
           bazel run //:generate
           buildifier -warnings all --lint=fix -r ..
           cd ..
-          bazel build //... --nobuild --enable_bzlmod --lockfile_mode=update
+          bazel build //... --nobuild --enable_bzlmod --lockfile_mode=update -k || true
           cd tests
-          bazel build //... --nobuild --enable_bzlmod --lockfile_mode=update
+          bazel build //... --nobuild --enable_bzlmod --lockfile_mode=update -k || true
 
           # Pull requests won't be created if the github actions change. Since for this
           # We mostly care about the actual code changes, we will just revert those files
