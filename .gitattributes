@@ -1,0 +1,5 @@
+
+# Generated files
+MODULE.bazel.lock
+maven_cpp_deps.bzl
+maven_java_deps.bzl
