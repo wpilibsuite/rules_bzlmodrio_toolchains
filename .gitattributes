@@ -1,5 +1,5 @@
 
 # Generated files
-MODULE.bazel.lock
-maven_cpp_deps.bzl
-maven_java_deps.bzl
+MODULE.bazel.lock linguist-generated
+maven_cpp_deps.bzl linguist-generated
+maven_java_deps.bzl linguist-generated
