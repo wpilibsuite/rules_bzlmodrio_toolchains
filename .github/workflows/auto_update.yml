@@ -15,9 +15,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - name: Set up Go 1.20.x
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         go-version: 1.20.x
+        cache: false
       id: go
 
     - uses: actions/checkout@v4
@@ -82,13 +83,12 @@ jobs:
 
     # Create pull requests
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
+      uses: peter-evans/create-pull-request@v6
       env:
         GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
       with:
         path: rules/rules_bzlmodrio_toolchains
         base: main
         token: ${{ secrets.AUTO_UPDATE_KEY }}
-        reviewers: pjreiniger
         branch: autoupdate_${{ env.NEW_VERSION }}
         title: "Auto Update to '${{ env.NEW_VERSION }}'"

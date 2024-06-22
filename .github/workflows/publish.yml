@@ -27,7 +27,7 @@ jobs:
       run: echo "ARCHIVE_NAME=rules/rules_bzlmodrio_toolchains/rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz" >> "$GITHUB_ENV"
 
     - name: Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: "${{ env.ARCHIVE_NAME }}"
@@ -60,25 +60,23 @@ jobs:
 
     # Create pull requests
     - name: Create Gentool Pull Request
-      uses: peter-evans/create-pull-request@v4
+      uses: peter-evans/create-pull-request@v6
       env:
         GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
       with:
         path: gentool
         base: refactor_dev
         token: ${{ secrets.AUTO_UPDATE_KEY }}
-        reviewers: pjreiniger
         branch: autoupdate/rules_bzlmodrio_toolchains_update_${{ env.NEW_VERSION }}
         title: "Auto Update rules_bzlmodrio_toolchains module to '${{ env.NEW_VERSION }}'"
 
     - name: Create BCR Pull Request
-      uses: peter-evans/create-pull-request@v4
+      uses: peter-evans/create-pull-request@v6
       env:
         GITHUB_TOKEN: ${{ secrets.AUTO_UPDATE_KEY }}
       with:
         path: bazel-central-registry
         base: bzlmodrio
         token: ${{ secrets.AUTO_UPDATE_KEY }}
-        reviewers: pjreiniger
         branch: autoupdate/rules_bzlmodrio_toolchains_update_${{ env.NEW_VERSION }}
         title: "Auto Update latest rules_bzlmodrio_toolchains to '${{ env.NEW_VERSION }}'"
