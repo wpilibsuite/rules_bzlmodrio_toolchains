@@ -39,7 +39,7 @@ def main():
     )
 
     manual_fixes(REPO_DIR)
-    
+
 
 def manual_fixes(repo_dir):
     for f in [".bazelrc-java", "tests/.bazelrc-java"]:
