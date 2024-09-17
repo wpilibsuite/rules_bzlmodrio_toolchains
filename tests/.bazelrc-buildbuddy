@@ -14,4 +14,6 @@ build:remote --nolegacy_important_outputs
 build --experimental_inmemory_jdeps_files
 build --experimental_inmemory_dotd_files
 
+build:ci --config=remote
 build:ci --build_metadata=ROLE=CI
+build:ci --remote_download_minimal
