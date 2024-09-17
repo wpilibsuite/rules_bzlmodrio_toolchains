@@ -38,6 +38,7 @@ jobs:
       uses: ./.github/actions/setup-build-buddy
       with:
         token: ${{ secrets.BUILDBUDDY_API_KEY }}
+        readonly_token: ${{ secrets.BUILDBUDDY_READONLY }}
     - run: bazel ${{ matrix.bazel_options }} build -k ${{ matrix.config }} --config=ci @rules_bzlmodrio_toolchains//...
       working-directory: tests
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
@@ -77,6 +78,7 @@ jobs:
       uses: ./.github/actions/setup-build-buddy
       with:
         token: ${{ secrets.BUILDBUDDY_API_KEY }}
+        readonly_token: ${{ secrets.BUILDBUDDY_READONLY }}
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci || true
       working-directory: tests
@@ -113,6 +115,7 @@ jobs:
       uses: ./.github/actions/setup-build-buddy
       with:
         token: ${{ secrets.BUILDBUDDY_API_KEY }}
+        readonly_token: ${{ secrets.BUILDBUDDY_READONLY }}
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci || true
       working-directory: tests
@@ -150,6 +153,7 @@ jobs:
       uses: ./.github/actions/setup-build-buddy
       with:
         token: ${{ secrets.BUILDBUDDY_API_KEY }}
+        readonly_token: ${{ secrets.BUILDBUDDY_READONLY }}
     - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci || true
       working-directory: tests
