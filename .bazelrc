@@ -1,4 +1,6 @@
 try-import user.bazelrc
+try-import .buildbuddy-auth.rc
+
 import .bazelrc-cc
 import .bazelrc-java
 import .bazelrc-buildbuddy

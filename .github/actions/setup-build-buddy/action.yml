@@ -1,0 +1,36 @@
+name: 'Setup BuildBuddy acache'
+description: 'Sets up the build buddy cache to be readonly / writing based on the presence of environment variables'
+
+inputs:
+  token:
+    description: 'Build Buddy API token'
+  readonly_token:
+    description: 'Build Buddy API readonly token'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup without key
+      env:
+        API_KEY: ${{ inputs.token }}
+        READONLY_KEY: ${{ inputs.readonly_token }}
+      if: ${{ env.API_KEY == '' }}
+      shell: bash
+      run: |
+          echo "No API key secret detected, will setup readonly cache"
+          echo "build:ci --noremote_upload_local_results" > .buildbuddy-auth.rc
+          echo "build:ci --remote_header=x-buildbuddy-api-key=${{ env.READONLY_KEY }}" >> .buildbuddy-auth.rc
+
+          echo "build:ci --noremote_upload_local_results" > tests/.buildbuddy-auth.rc
+          echo "build:ci --remote_header=x-buildbuddy-api-key=${{ env.READONLY_KEY }}" >> tests/.buildbuddy-auth.rc
+
+    - name: Set with key
+      env:
+        API_KEY: ${{ inputs.token }}
+      if: ${{ env.API_KEY != '' }}
+      shell: bash
+      run: |
+          echo "API Key detected!"
+          echo "build:ci --remote_header=x-buildbuddy-api-key=${{ env.API_KEY }}" > .buildbuddy-auth.rc
+          echo "build:ci --remote_header=x-buildbuddy-api-key=${{ env.API_KEY }}" > tests/.buildbuddy-auth.rc
