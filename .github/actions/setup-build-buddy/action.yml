@@ -16,7 +16,7 @@ runs:
       run: |
           echo "No API key secret detected, will setup readonly cache"
           echo "build:ci --config=build_buddy_readonly" > .buildbuddy-auth.rc
-          echo "build:ci --config=build_buddy_readonly"" > tests/.buildbuddy-auth.rc
+          echo "build:ci --config=build_buddy_readonly" > tests/.buildbuddy-auth.rc
 
     - name: Set with key
       env:
