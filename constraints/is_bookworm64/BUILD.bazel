@@ -1,0 +1,30 @@
+constraint_setting(
+    name = "is_bookworm64",
+    default_constraint_value = ":false",
+)
+
+constraint_value(
+    name = "true",
+    constraint_setting = ":is_bookworm64",
+    visibility = ["//visibility:public"],
+)
+
+constraint_value(
+    name = "false",
+    constraint_setting = ":is_bookworm64",
+)
+
+config_setting(
+    name = "bookworm64",
+    constraint_values = [":true"],
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "bookworm64_debug",
+    constraint_values = [":true"],
+    values = {
+        "compilation_mode": "dbg",
+    },
+    visibility = ["//visibility:public"],
+)

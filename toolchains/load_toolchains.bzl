@@ -2,6 +2,26 @@ load("//toolchains:configure_cross_compiler.bzl", "configure_cross_compiler")
 
 def load_toolchains():
     configure_cross_compiler(
+        name = "local_bookworm_32",
+        compiler = "bookworm-32",
+        bin_subfolder = "bookworm/bin",
+        bin_prefix = "armv7-bookworm-linux-gnueabihf-",
+        sysroot_subfolder = "bookworm/arm-linux-gnueabihf/sysroot",
+        cxx_version = "12",
+        sysroot_include_folder = "arm-linux-gnueabihf",
+        repo_shortname = "bookworm_32",
+    )
+    configure_cross_compiler(
+        name = "local_bookworm_64",
+        compiler = "bookworm-64",
+        bin_subfolder = "bookworm/bin",
+        bin_prefix = "aarch64-bookworm-linux-gnu-",
+        sysroot_subfolder = "bookworm/aarch64-linux-gnu/sysroot",
+        cxx_version = "12",
+        sysroot_include_folder = "aarch64-linux-gnu",
+        repo_shortname = "bookworm_64",
+    )
+    configure_cross_compiler(
         name = "local_bullseye_32",
         compiler = "bullseye-32",
         bin_subfolder = "bullseye/bin",
@@ -35,7 +55,7 @@ def load_toolchains():
         name = "local_roborio",
         compiler = "roborio",
         bin_subfolder = "roborio-academic/bin",
-        bin_prefix = "arm-frc2024-linux-gnueabi-",
+        bin_prefix = "arm-frc2025-linux-gnueabi-",
         sysroot_subfolder = "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
         cxx_version = "12",
         sysroot_include_folder = "arm-nilrt-linux-gnueabi",

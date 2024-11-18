@@ -1,7 +1,7 @@
 module(
     name = "rules_bzlmodrio_toolchains",
-    version = "2024-1.bcr1",
-    compatibility_level = 2024,
+    version = "2025-1",
+    compatibility_level = 2025,
 )
 
 bazel_dep(name = "platforms", version = "0.0.9")
@@ -11,6 +11,12 @@ bazel_dep(name = "bazel_skylib", version = "1.6.1")
 deps = use_extension("//:maven_deps.bzl", "deps")
 use_repo(
     deps,
+    "bazelrio_bookworm_32_toolchain_linux",
+    "bazelrio_bookworm_32_toolchain_macos",
+    "bazelrio_bookworm_32_toolchain_windows",
+    "bazelrio_bookworm_64_toolchain_linux",
+    "bazelrio_bookworm_64_toolchain_macos",
+    "bazelrio_bookworm_64_toolchain_windows",
     "bazelrio_bullseye_32_toolchain_linux",
     "bazelrio_bullseye_32_toolchain_macos",
     "bazelrio_bullseye_32_toolchain_windows",
@@ -26,9 +32,15 @@ use_repo(
 )
 
 sh_configure = use_extension("@rules_bzlmodrio_toolchains//:extensions.bzl", "sh_configure")
-use_repo(sh_configure, "local_bullseye_32", "local_bullseye_64", "local_raspi_32", "local_roborio")
+use_repo(sh_configure, "local_bookworm_32", "local_bookworm_64", "local_bullseye_32", "local_bullseye_64", "local_raspi_32", "local_roborio")
 
 register_toolchains(
+    "@local_bookworm_32//:macos",
+    "@local_bookworm_32//:linux",
+    "@local_bookworm_32//:windows",
+    "@local_bookworm_64//:macos",
+    "@local_bookworm_64//:linux",
+    "@local_bookworm_64//:windows",
     "@local_bullseye_32//:macos",
     "@local_bullseye_32//:linux",
     "@local_bullseye_32//:windows",

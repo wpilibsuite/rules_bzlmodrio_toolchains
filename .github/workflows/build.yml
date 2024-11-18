@@ -126,15 +126,88 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        # Build non-bzlmod, bullseye32:
+        # Build non-bzlmod, bullseye64:
         - { name: "windows - bullseye64",         os: windows-2022,   java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bullseye64",         os: ubuntu-22.04,   java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=bullseye64", bazel_options: "",                                 }
-        - { name: "macos   - bullseye64",         os: macos-14,       java_arch: "aarch64", command: "build", config: "--noenable_bzlmod --config=bullseye32", bazel_options: "",                                 }
+        - { name: "macos   - bullseye64",         os: macos-14,       java_arch: "aarch64", command: "build", config: "--noenable_bzlmod --config=bullseye64", bazel_options: "",                                 }
 
-        # Build bzlmod, bullseye32:
+        # Build bzlmod, bullseye64:
         - { name: "windows - bzlmod bullseye64",  os: windows-2022,   java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod bullseye64",  os: ubuntu-22.04,   java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
         - { name: "macos   - bzlmod bullseye64",  os: macos-14,       java_arch: "aarch64", command: "build", config: "--enable_bzlmod --config=bullseye64", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with: { python-version: '3.11' }
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: 17
+        architecture: ${{ matrix.java_arch }}
+    - id: setup_build_buddy
+      uses: ./.github/actions/setup-build-buddy
+      with:
+        token: ${{ secrets.BUILDBUDDY_API_KEY }}
+    - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci || true
+      working-directory: tests
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci
+      working-directory: tests
+
+  build_bookworm32:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build non-bzlmod, bookworm32
+        - { name: "windows - bookworm32",         os: windows-2022, java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=bookworm32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bookworm32",         os: ubuntu-22.04, java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=bookworm32", bazel_options: "",                                 }
+        - { name: "macos   - bookworm32",         os: macos-14,     java_arch: "aarch64", command: "build", config: "--noenable_bzlmod --config=bookworm32", bazel_options: "",                                 }
+
+        # Build bzlmod, bookworm32
+        - { name: "windows - bzlmod bookworm32",  os: windows-2022, java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=bookworm32", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod bookworm32",  os: ubuntu-22.04, java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=bookworm32", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod bookworm32",  os: macos-14,     java_arch: "aarch64", command: "build", config: "--enable_bzlmod --config=bookworm32", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with: { python-version: '3.11' }
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: 17
+        architecture: ${{ matrix.java_arch }}
+    - id: setup_build_buddy
+      uses: ./.github/actions/setup-build-buddy
+      with:
+        token: ${{ secrets.BUILDBUDDY_API_KEY }}
+    - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci || true
+      working-directory: tests
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci
+      working-directory: tests
+
+
+  build_bullseye64:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build non-bzlmod, bookworm64:
+        - { name: "windows - bookworm64",         os: windows-2022,   java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=bookworm64", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bookworm64",         os: ubuntu-22.04,   java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=bookworm64", bazel_options: "",                                 }
+        - { name: "macos   - bookworm64",         os: macos-14,       java_arch: "aarch64", command: "build", config: "--noenable_bzlmod --config=bookworm64", bazel_options: "",                                 }
+
+        # Build bzlmod, bookworm64:
+        - { name: "windows - bzlmod bookworm64",  os: windows-2022,   java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=bookworm64", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod bookworm64",  os: ubuntu-22.04,   java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=bookworm64", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod bookworm64",  os: macos-14,       java_arch: "aarch64", command: "build", config: "--enable_bzlmod --config=bookworm64", bazel_options: "",                                 }
     name: "Build - ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     steps:
@@ -164,12 +237,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        # Build non-bzlmod, bullseye32:
+        # Build non-bzlmod, raspi32:
         - { name: "windows - raspi32",         os: windows-2022, java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - raspi32",         os: ubuntu-22.04, java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "",                                 }
         - { name: "macos   - raspi32",         os: macos-14,     java_arch: "aarch64", command: "build", config: "--noenable_bzlmod --config=raspi32", bazel_options: "",                                 }
 
-        # Build bzlmod, bullseye32:
+        # Build bzlmod, raspi32:
         - { name: "windows - bzlmod raspi32",  os: windows-2022, java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "--output_user_root=C:\\bazelroot", }
         - { name: "ubuntu  - bzlmod raspi32",  os: ubuntu-22.04, java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }
         - { name: "macos   - bzlmod raspi32",  os: macos-14,     java_arch: "aarch64", command: "build", config: "--enable_bzlmod --config=raspi32", bazel_options: "",                                 }

@@ -23,6 +23,16 @@ build:bullseye64 --platforms=@rules_bzlmodrio_toolchains//platforms/bullseye64
 build:bullseye64 --build_tag_filters=-no-bullseye
 build:bullseye64 --platform_suffix=bullseye64
 
+# bookworm32
+build:bookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm32
+build:bookworm32 --build_tag_filters=-no-bullseye
+build:bookworm32 --platform_suffix=bookworm32
+
+# bookworm64
+build:bookworm64 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm64
+build:bookworm64 --build_tag_filters=-no-bullseye
+build:bookworm64 --platform_suffix=bookworm64
+
 # rasppi
 build:raspi32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspi32
 build:raspi32 --build_tag_filters=-no-raspi

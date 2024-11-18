@@ -9,6 +9,12 @@ load("@rules_bzlmodrio_toolchains//toolchains:load_toolchains.bzl", "load_toolch
 load_toolchains()
 
 register_toolchains(
+    "@local_bookworm_32//:macos",
+    "@local_bookworm_32//:linux",
+    "@local_bookworm_32//:windows",
+    "@local_bookworm_64//:macos",
+    "@local_bookworm_64//:linux",
+    "@local_bookworm_64//:windows",
     "@local_bullseye_32//:macos",
     "@local_bullseye_32//:linux",
     "@local_bullseye_32//:windows",
