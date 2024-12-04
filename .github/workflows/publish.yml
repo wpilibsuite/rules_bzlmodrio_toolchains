@@ -1,0 +1,33 @@
+name: Publish Module
+on:
+  workflow_dispatch:
+  push:
+    tags:
+    - '*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish_module:
+    name: "Publish Module"
+    runs-on: ubuntu-22.04
+    steps:
+    # Checkout repository
+    - uses: actions/checkout@v4
+      with:
+        path: rules/rules_bzlmodrio_toolchains
+
+    - name: Create Archive
+      run: git archive HEAD --format=tar.gz --output="rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz"
+      working-directory: rules/rules_bzlmodrio_toolchains
+
+    - name: Setup archive name
+      run: echo "ARCHIVE_NAME=rules/rules_bzlmodrio_toolchains/rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz" >> "$GITHUB_ENV"
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: "${{ env.ARCHIVE_NAME }}"

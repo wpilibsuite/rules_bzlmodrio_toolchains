@@ -194,7 +194,7 @@ jobs:
       working-directory: tests
 
 
-  build_bullseye64:
+  build_bookworm64:
     strategy:
       fail-fast: false
       matrix:
