@@ -65,7 +65,12 @@ build:bookworm64 --incompatible_enable_cc_toolchain_resolution
 build:bookworm64 --copt=-std=c++20
 build:bookworm64 --features=compiler_param_file
 
-# rasppi
-build:raspi32 --incompatible_enable_cc_toolchain_resolution
-build:raspi32 --copt=-std=c++20
-build:raspi32 --features=compiler_param_file
+# rasppi bullseye
+build:raspibullseye32 --incompatible_enable_cc_toolchain_resolution
+build:raspibullseye32 --copt=-std=c++20
+build:raspibullseye32 --features=compiler_param_file
+
+# rasppi bookworm
+build:raspibookworm32 --incompatible_enable_cc_toolchain_resolution
+build:raspibookworm32 --copt=-std=c++20
+build:raspibookworm32 --features=compiler_param_file

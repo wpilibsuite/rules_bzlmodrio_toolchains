@@ -42,14 +42,24 @@ def load_toolchains():
         repo_shortname = "bullseye_64",
     )
     configure_cross_compiler(
-        name = "local_raspi_32",
-        compiler = "raspi-32",
+        name = "local_raspi_bookworm_32",
+        compiler = "raspi-bookworm-32",
+        bin_subfolder = "raspi-bookworm/bin",
+        bin_prefix = "armv6-bookworm-linux-gnueabihf-",
+        sysroot_subfolder = "raspi-bookworm/arm-linux-gnueabihf/sysroot",
+        cxx_version = "12",
+        sysroot_include_folder = "arm-linux-gnueabihf",
+        repo_shortname = "raspi_bookworm_32",
+    )
+    configure_cross_compiler(
+        name = "local_raspi_bullseye_32",
+        compiler = "raspi-bullseye-32",
         bin_subfolder = "raspi-bullseye/bin",
         bin_prefix = "armv6-bullseye-linux-gnueabihf-",
         sysroot_subfolder = "raspi-bullseye/arm-linux-gnueabihf/sysroot",
         cxx_version = "10",
         sysroot_include_folder = "arm-linux-gnueabihf",
-        repo_shortname = "raspi_32",
+        repo_shortname = "raspi_bullseye_32",
     )
     configure_cross_compiler(
         name = "local_roborio",

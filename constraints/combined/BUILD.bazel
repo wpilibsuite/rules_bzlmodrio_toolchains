@@ -6,7 +6,10 @@ selects.config_setting_group(
         "//constraints/is_roborio:roborio",
         "//constraints/is_bullseye32:bullseye32",
         "//constraints/is_bullseye64:bullseye64",
-        "//constraints/is_raspi32:raspi32",
+        "//constraints/is_bookworm32:bookworm32",
+        "//constraints/is_bookworm64:bookworm64",
+        "//constraints/is_raspibullseye32:raspibullseye32",
+        "//constraints/is_raspibookworm32:raspibookworm32",
     ],
 )
 

@@ -1,8 +1,8 @@
 platform(
-    name = "raspi32",
+    name = "raspibullseye32",
     constraint_values = [
         "@platforms//os:linux",
         "@platforms//cpu:armv7",
-        "//constraints/is_raspi32:true",
+        "//constraints/is_raspibullseye32:true",
     ],
 )

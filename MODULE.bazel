@@ -1,6 +1,6 @@
 module(
     name = "rules_bzlmodrio_toolchains",
-    version = "2025-1",
+    version = "2025-1.bcr1",
     compatibility_level = 2025,
 )
 
@@ -13,26 +13,36 @@ use_repo(
     deps,
     "bazelrio_bookworm_32_toolchain_linux",
     "bazelrio_bookworm_32_toolchain_macos",
+    "bazelrio_bookworm_32_toolchain_macosarm",
     "bazelrio_bookworm_32_toolchain_windows",
     "bazelrio_bookworm_64_toolchain_linux",
     "bazelrio_bookworm_64_toolchain_macos",
+    "bazelrio_bookworm_64_toolchain_macosarm",
     "bazelrio_bookworm_64_toolchain_windows",
     "bazelrio_bullseye_32_toolchain_linux",
     "bazelrio_bullseye_32_toolchain_macos",
+    "bazelrio_bullseye_32_toolchain_macosarm",
     "bazelrio_bullseye_32_toolchain_windows",
     "bazelrio_bullseye_64_toolchain_linux",
     "bazelrio_bullseye_64_toolchain_macos",
+    "bazelrio_bullseye_64_toolchain_macosarm",
     "bazelrio_bullseye_64_toolchain_windows",
-    "bazelrio_raspi_32_toolchain_linux",
-    "bazelrio_raspi_32_toolchain_macos",
-    "bazelrio_raspi_32_toolchain_windows",
+    "bazelrio_raspi_bookworm_32_toolchain_linux",
+    "bazelrio_raspi_bookworm_32_toolchain_macos",
+    "bazelrio_raspi_bookworm_32_toolchain_macosarm",
+    "bazelrio_raspi_bookworm_32_toolchain_windows",
+    "bazelrio_raspi_bullseye_32_toolchain_linux",
+    "bazelrio_raspi_bullseye_32_toolchain_macos",
+    "bazelrio_raspi_bullseye_32_toolchain_macosarm",
+    "bazelrio_raspi_bullseye_32_toolchain_windows",
     "bazelrio_roborio_toolchain_linux",
     "bazelrio_roborio_toolchain_macos",
+    "bazelrio_roborio_toolchain_macosarm",
     "bazelrio_roborio_toolchain_windows",
 )
 
 sh_configure = use_extension("@rules_bzlmodrio_toolchains//:extensions.bzl", "sh_configure")
-use_repo(sh_configure, "local_bookworm_32", "local_bookworm_64", "local_bullseye_32", "local_bullseye_64", "local_raspi_32", "local_roborio")
+use_repo(sh_configure, "local_bookworm_32", "local_bookworm_64", "local_bullseye_32", "local_bullseye_64", "local_raspi_bookworm_32", "local_raspi_bullseye_32", "local_roborio")
 
 register_toolchains(
     "@local_bookworm_32//:macos",
@@ -47,9 +57,12 @@ register_toolchains(
     "@local_bullseye_64//:macos",
     "@local_bullseye_64//:linux",
     "@local_bullseye_64//:windows",
-    "@local_raspi_32//:macos",
-    "@local_raspi_32//:linux",
-    "@local_raspi_32//:windows",
+    "@local_raspi_bookworm_32//:macos",
+    "@local_raspi_bookworm_32//:linux",
+    "@local_raspi_bookworm_32//:windows",
+    "@local_raspi_bullseye_32//:macos",
+    "@local_raspi_bullseye_32//:linux",
+    "@local_raspi_bullseye_32//:windows",
     "@local_roborio//:macos",
     "@local_roborio//:linux",
     "@local_roborio//:windows",

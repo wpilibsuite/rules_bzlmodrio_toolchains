@@ -25,18 +25,29 @@ build:bullseye64 --platform_suffix=bullseye64
 
 # bookworm32
 build:bookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm32
-build:bookworm32 --build_tag_filters=-no-bullseye
+build:bookworm32 --build_tag_filters=-no-bookworm
 build:bookworm32 --platform_suffix=bookworm32
 
 # bookworm64
 build:bookworm64 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm64
-build:bookworm64 --build_tag_filters=-no-bullseye
+build:bookworm64 --build_tag_filters=-no-bookworm
 build:bookworm64 --platform_suffix=bookworm64
 
-# rasppi
-build:raspi32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspi32
-build:raspi32 --build_tag_filters=-no-raspi
-build:raspi32 --platform_suffix=raspi32
+# rasppi bullseye
+build:raspibullseye32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspibullseye32
+build:raspibullseye32 --build_tag_filters=-no-raspi
+build:raspibullseye32 --platform_suffix=raspibullseye32
+
+# rasppi bookworm
+build:raspibookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspibookworm32
+build:raspibookworm32 --build_tag_filters=-no-raspi
+build:raspibookworm32 --platform_suffix=raspibookworm32
+
+# Alias toolchain names to what wpilibsuite uses for CI/Artifact naming
+build:athena --config=roborio
+build:systemcore --config=bookworm64
+build:linuxarm32 --config=raspibookworm32
+build:linuxarm64 --config=bookworm64
 
 test --test_output=errors
 common --registry=https://raw.githubusercontent.com/pjreiniger/bazel-central-registry/bzlmodrio/
