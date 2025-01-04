@@ -11,6 +11,8 @@ def defines_helper():
     output = {
         "@rules_bzlmodrio_toolchains//constraints/is_bullseye32:bullseye32": __helper(is_roborio = False, is_bullseye = True, is_raspi = False),
         "@rules_bzlmodrio_toolchains//constraints/is_bullseye64:bullseye64": __helper(is_roborio = False, is_bullseye = True, is_raspi = False),
+        "@rules_bzlmodrio_toolchains//constraints/is_raspibookworm32:raspibookworm32": __helper(is_roborio = False, is_bullseye = False, is_raspi = True),
+        "@rules_bzlmodrio_toolchains//constraints/is_raspibullseye32:raspibullseye32": __helper(is_roborio = False, is_bullseye = False, is_raspi = True),
         "@rules_bzlmodrio_toolchains//constraints/is_roborio:roborio": __helper(is_roborio = True, is_bullseye = False, is_raspi = False),
         "//conditions:default": __helper(is_roborio = False, is_bullseye = False, is_raspi = False),
     }
