@@ -50,7 +50,6 @@ build:raspibookworm32 --platform_suffix=raspibookworm32
 
 # Alias toolchain names to what wpilibsuite uses for CI/Artifact naming
 build:athena --config=roborio
-build:systemcore --config=bookworm64
 build:linuxarm32 --config=raspibookworm32
 build:linuxarm64 --config=bookworm64
 
