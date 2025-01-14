@@ -84,6 +84,42 @@ jobs:
       run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci
       working-directory: tests
 
+  build_systemcore:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        # Build non-bzlmod, systemcore
+        - { name: "windows - systemcore",         os: windows-2022, java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=systemcore", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - systemcore",         os: ubuntu-22.04, java_arch: "x64",     command: "build", config: "--noenable_bzlmod --config=systemcore", bazel_options: "",                                 }
+        - { name: "macos   - systemcore",         os: macos-14,     java_arch: "aarch64", command: "build", config: "--noenable_bzlmod --config=systemcore", bazel_options: "",                                 }
+
+        # Build bzlmod, systemcore
+        # - { name: "windows - bzlmod systemcore",  os: windows-2022, java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=systemcore", bazel_options: "--output_user_root=C:\\bazelroot", }
+        - { name: "ubuntu  - bzlmod systemcore",  os: ubuntu-22.04, java_arch: "x64",     command: "build", config: "--enable_bzlmod --config=systemcore", bazel_options: "",                                 }
+        - { name: "macos   - bzlmod systemcore",  os: macos-14,     java_arch: "aarch64", command: "build", config: "--enable_bzlmod --config=systemcore", bazel_options: "",                                 }
+    name: "Build - ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with: { python-version: '3.11' }
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: 17
+        architecture: ${{ matrix.java_arch }}
+    - id: setup_build_buddy
+      uses: ./.github/actions/setup-build-buddy
+      with:
+        token: ${{ secrets.BUILDBUDDY_API_KEY }}
+    - name: Build and allow failure # TODO Sometimes symlinks don't get created correctly the first time around
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci || true
+      working-directory: tests
+    - name: Build
+      run: bazel ${{ matrix.bazel_options }} ${{ matrix.command }} //... -k ${{ matrix.config }} --verbose_failures --config=ci
+      working-directory: tests
+
   build_linuxarm32:
     strategy:
       fail-fast: false
