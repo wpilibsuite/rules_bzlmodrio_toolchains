@@ -43,6 +43,9 @@ register_toolchains(
     "@local_roborio//:macos",
     "@local_roborio//:linux",
     "@local_roborio//:windows",
+    "@local_systemcore//:macos",
+    "@local_systemcore//:linux",
+    "@local_systemcore//:windows",
 )
 
 # Styleguide

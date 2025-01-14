@@ -30,6 +30,9 @@ register_toolchains(
     "@local_roborio//:macos",
     "@local_roborio//:linux",
     "@local_roborio//:windows",
+    "@local_systemcore//:macos",
+    "@local_systemcore//:linux",
+    "@local_systemcore//:windows",
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")

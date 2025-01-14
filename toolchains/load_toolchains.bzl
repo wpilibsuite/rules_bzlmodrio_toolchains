@@ -71,3 +71,13 @@ def load_toolchains():
         sysroot_include_folder = "arm-nilrt-linux-gnueabi",
         repo_shortname = "roborio",
     )
+    configure_cross_compiler(
+        name = "local_systemcore",
+        compiler = "systemcore",
+        bin_subfolder = "bookworm/bin",
+        bin_prefix = "aarch64-bookworm-linux-gnu-",
+        sysroot_subfolder = "bookworm/aarch64-linux-gnu/sysroot",
+        cxx_version = "12",
+        sysroot_include_folder = "aarch64-linux-gnu",
+        repo_shortname = "systemcore",
+    )

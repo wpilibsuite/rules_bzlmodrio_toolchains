@@ -39,10 +39,14 @@ use_repo(
     "bazelrio_roborio_toolchain_macos",
     "bazelrio_roborio_toolchain_macosarm",
     "bazelrio_roborio_toolchain_windows",
+    "bazelrio_systemcore_toolchain_linux",
+    "bazelrio_systemcore_toolchain_macos",
+    "bazelrio_systemcore_toolchain_macosarm",
+    "bazelrio_systemcore_toolchain_windows",
 )
 
 sh_configure = use_extension("@rules_bzlmodrio_toolchains//:extensions.bzl", "sh_configure")
-use_repo(sh_configure, "local_bookworm_32", "local_bookworm_64", "local_bullseye_32", "local_bullseye_64", "local_raspi_bookworm_32", "local_raspi_bullseye_32", "local_roborio")
+use_repo(sh_configure, "local_bookworm_32", "local_bookworm_64", "local_bullseye_32", "local_bullseye_64", "local_raspi_bookworm_32", "local_raspi_bullseye_32", "local_roborio", "local_systemcore")
 
 register_toolchains(
     "@local_bookworm_32//:macos",
@@ -66,4 +70,7 @@ register_toolchains(
     "@local_roborio//:macos",
     "@local_roborio//:linux",
     "@local_roborio//:windows",
+    "@local_systemcore//:macos",
+    "@local_systemcore//:linux",
+    "@local_systemcore//:windows",
 )

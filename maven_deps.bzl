@@ -219,6 +219,36 @@ def __setup_toolchains_dependencies(mctx):
         build_file_content = filegroup_all,
     )
 
+    # systemcore
+    maybe(
+        http_archive,
+        "bazelrio_systemcore_toolchain_macosarm",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2025-1/arm64-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
+        sha256 = "e29fa2433cee667d75ff106543d88d3d4154e2f450c79d86d316d5b8015d11e4",
+        build_file_content = filegroup_all,
+    )
+    maybe(
+        http_archive,
+        "bazelrio_systemcore_toolchain_macos",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2025-1/arm64-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz",
+        sha256 = "34af7c9b601bbce1fe5c5e07f70fe8abd7ed3985cc603dbc12ef7f3d8c2f0b9d",
+        build_file_content = filegroup_all,
+    )
+    maybe(
+        http_archive,
+        "bazelrio_systemcore_toolchain_linux",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2025-1/arm64-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz",
+        sha256 = "d94005ae516bb43fc85a07ed89cb51bec96ed931ca5c084427f1432a1dbf71e9",
+        build_file_content = filegroup_all,
+    )
+    maybe(
+        http_archive,
+        "bazelrio_systemcore_toolchain_windows",
+        url = "https://github.com/wpilibsuite/opensdk/releases/download/v2025-1/arm64-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip",
+        sha256 = "50f26a9b0ae595bd536f5b7003a465b04871005cbe57c18e84f657e83df13f4c",
+        build_file_content = filegroup_all,
+    )
+
 def setup_legacy_setup_toolchains_dependencies():
     __setup_toolchains_dependencies(None)
 
