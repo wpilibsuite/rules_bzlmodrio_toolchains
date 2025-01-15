@@ -4,6 +4,7 @@ selects.config_setting_group(
     name = "is_cross_compiler",
     match_any = [
         "//constraints/is_roborio:roborio",
+        "//constraints/is_systemcore:systemcore",
         "//constraints/is_bullseye32:bullseye32",
         "//constraints/is_bullseye64:bullseye64",
         "//constraints/is_bookworm32:bookworm32",
