@@ -21,7 +21,6 @@ config_setting(
         "@platforms//os:windows",
         "@platforms//cpu:arm64",
     ],
-    values = {"cpu": "x64_arm64_windows"},
 )
 
 config_setting(
@@ -32,7 +31,6 @@ config_setting(
     ],
     values = {
         "compilation_mode": "dbg",
-        "cpu": "x64_arm64_windows",
     },
     visibility = ["//visibility:public"],
 )
