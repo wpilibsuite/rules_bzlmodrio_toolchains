@@ -2,7 +2,7 @@ platform(
     name = "bookworm64",
     constraint_values = [
         "@platforms//os:linux",
-        "@platforms//cpu:armv7",
+        "@platforms//cpu:arm64",
         "//constraints/is_bookworm64:true",
     ],
 )

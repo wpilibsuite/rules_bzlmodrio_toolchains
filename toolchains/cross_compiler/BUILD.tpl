@@ -1,5 +1,5 @@
 load(":cc-toolchain-config.bzl", "cc_toolchain_config")
-tag = "armv7"
+tag = "{target_cpu}"
 
 cc_toolchain_config_name = "cc-toolchain_config-{}".format(tag)
 
@@ -24,6 +24,8 @@ cc_toolchain_config(
     name = cc_toolchain_config_name,
     toolchain_identifier = toolchain_name,
     wrapper_extension = "{wrapper_extension}",
+    target_cpu = "{target_cpu}",
+    target_system_name = "{target_system_name}",
     cxx_builtin_include_directories=cxx_builtin_include_directories
 )
 

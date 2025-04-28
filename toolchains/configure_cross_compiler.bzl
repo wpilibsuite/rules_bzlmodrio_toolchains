@@ -47,6 +47,8 @@ def configure_cross_compiler_impl(repository_ctx):
 
     compiler_workspace = Label("@" + substitutions["{compiler_repo}"]).workspace_name
     substitutions["{actual_compiler_path}"] = compiler_workspace
+    substitutions["{target_cpu}"] = repository_ctx.attr.target_cpu
+    substitutions["{target_system_name}"] = repository_ctx.attr.target_system_name
 
     for binary in BINARIES:
         bin_substitution = dict(substitutions)
@@ -81,5 +83,7 @@ configure_cross_compiler = repository_rule(
         "repo_shortname": attr.string(mandatory = True),
         "sysroot_include_folder": attr.string(mandatory = True),
         "sysroot_subfolder": attr.string(mandatory = True),
+        "target_cpu": attr.string(mandatory = True),
+        "target_system_name": attr.string(mandatory = True),
     },
 )

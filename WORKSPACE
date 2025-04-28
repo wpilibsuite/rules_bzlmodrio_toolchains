@@ -1,5 +1,25 @@
 workspace(name = "rules_bzlmodrio_toolchains")
 
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "rules_cc",
+    sha256 = "712d77868b3152dd618c4d64faaddefcc5965f90f5de6e6dd1d5ddcd0be82d42",
+    strip_prefix = "rules_cc-0.1.1",
+    urls = ["https://github.com/bazelbuild/rules_cc/releases/download/0.1.1/rules_cc-0.1.1.tar.gz"],
+)
+
+http_archive(
+    name = "com_google_protobuf",
+    sha256 = "07a43d88fe5a38e434c7f94129cad56a4c43a51f99336074d0799c2f7d4e44c5",
+    strip_prefix = "protobuf-30.2",
+    url = "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v30.2.tar.gz",
+)
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
+protobuf_deps()
+
 load("@rules_bzlmodrio_toolchains//:maven_deps.bzl", "setup_legacy_setup_toolchains_dependencies")
 
 setup_legacy_setup_toolchains_dependencies()
@@ -34,8 +54,6 @@ register_toolchains(
     "@local_systemcore//:linux",
     "@local_systemcore//:windows",
 )
-
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "bazel_skylib",

@@ -6,6 +6,7 @@ load(
     "flag_set",
     "tool_path",
 )
+load("@rules_cc//cc/common:cc_common.bzl", "cc_common")
 
 def _impl(ctx):
     # Alias for readability
@@ -172,11 +173,11 @@ def _impl(ctx):
         features = features,
         toolchain_identifier = ctx.attr.toolchain_identifier,
         host_system_name = "local",
-        target_system_name = "arm-frc2023-linux-gnueabi",
-        target_cpu = "armv7",
+        target_system_name = ctx.attr.target_system_name,
+        target_cpu = ctx.attr.target_cpu,
         target_libc = "glibc-2.24",
         cc_target_os = "linux",
-        compiler = "gcc-12.1.0",
+        compiler = "gcc",
         abi_version = "gcc-12.1.0",
         abi_libc_version = "glibc-2.24",
         tool_paths = tool_paths,
@@ -187,6 +188,8 @@ def _impl(ctx):
 cc_toolchain_config = rule(
     attrs = {
         "cxx_builtin_include_directories": attr.string_list(mandatory = True),
+        "target_cpu": attr.string(mandatory = True),
+        "target_system_name": attr.string(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),
         "wrapper_extension": attr.string(mandatory = True),
     },
