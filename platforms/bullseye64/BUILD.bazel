@@ -5,4 +5,5 @@ platform(
         "@platforms//cpu:arm64",
         "//constraints/is_bullseye64:true",
     ],
+    visibility = ["//visibility:public"],
 )

@@ -5,4 +5,5 @@ platform(
         "@platforms//cpu:arm64",
         "//constraints/is_systemcore:true",
     ],
+    visibility = ["//visibility:public"],
 )
