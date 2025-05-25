@@ -5,4 +5,5 @@ platform(
         "@platforms//cpu:arm64",
         "//constraints/is_bookworm64:true",
     ],
+    visibility = ["//visibility:public"],
 )
