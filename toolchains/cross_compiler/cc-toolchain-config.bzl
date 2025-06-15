@@ -5,6 +5,7 @@ load(
     "flag_group",
     "flag_set",
     "tool_path",
+    "with_feature_set",
 )
 load("@rules_cc//cc/common:cc_common.bzl", "cc_common")
 
@@ -41,15 +42,20 @@ def _impl(ctx):
         ACTION_NAMES.clif_match,
     ]
 
+    # TODO(austin): Turn this on when the new toolchain is released.
+    use_gold = False
+
     tool_paths = [
         tool_path(name = "gcc", path = "bin/gcc" + wrapper_extension),
-        tool_path(name = "ld", path = "bin/ld" + wrapper_extension),
+        tool_path(name = "ld", path = "bin/ld.gold" + wrapper_extension if use_gold else "bin/ld" + wrapper_extension),
         tool_path(name = "ar", path = "bin/ar" + wrapper_extension),
         tool_path(name = "cpp", path = "bin/cpp" + wrapper_extension),
         tool_path(name = "gcov", path = "bin/gcov" + wrapper_extension),
         tool_path(name = "nm", path = "bin/nm" + wrapper_extension),
         tool_path(name = "objdump", path = "bin/objdump" + wrapper_extension),
         tool_path(name = "strip", path = "bin/strip" + wrapper_extension),
+        tool_path(name = "dwp", path = "bin/dwp" + wrapper_extension),
+        tool_path(name = "objcopy", path = "bin/objcopy" + wrapper_extension),
     ]
 
     unfiltered_compile_flags_feature = feature(
@@ -83,10 +89,11 @@ def _impl(ctx):
                 actions = all_link_actions,
                 flag_groups = ([
                     flag_group(
-                        flags = [
-                            "-rdynamic",
+                        flags = ([
+                            # Enables --start-lib
+                            "-fuse-ld=gold",
+                        ] if use_gold else []) + [
                             "-pthread",
-                            "-ldl",
                             "-latomic",
                             "-lstdc++",
                             "-lm",
@@ -106,27 +113,77 @@ def _impl(ctx):
                 actions = all_compile_actions,
                 flag_groups = [
                     flag_group(
+                        # Security hardening requires optimization.
+                        # We need to undef it as some distributions now have it enabled by default.
+                        flags = ["-U_FORTIFY_SOURCE"],
+                    ),
+                ],
+                with_features = [
+                    with_feature_set(
+                        not_features = ["thin_lto"],
+                    ),
+                ],
+            ),
+            flag_set(
+                actions = all_compile_actions,
+                flag_groups = ([
+                    flag_group(
                         flags = [
                             "-Wformat=2",
                             "-pedantic",
                             "-Wno-psabi",
                             "-Wno-unused-parameter",
-                            "-fPIC",
-                            "-rdynamic",
                             "-pthread",
+                            "-fstack-protector",
+                            "-Wall",
+                            "-fno-omit-frame-pointer",
                         ],
                     ),
-                ],
+                ]),
             ),
             flag_set(
-                actions = all_cpp_compile_actions,
-                flag_groups = [
+                actions = all_compile_actions,
+                flag_groups = ([
                     flag_group(
                         flags = [
-                            "-lstdc++",
+                            "-g",
+                            "-Og",
+                            "-g",
+                            "-gz=zlib",
+                            "-ffunction-sections",
+                            "-fdata-sections",
                         ],
                     ),
-                ],
+                ]),
+                with_features = [with_feature_set(features = ["dbg"])],
+            ),
+            flag_set(
+                actions = all_compile_actions,
+                flag_groups = ([
+                    flag_group(
+                        flags = [
+                            "-g0",
+                            "-O2",
+                            "-D_FORTIFY_SOURCE=1",
+                            "-DNDEBUG",
+                            "-ffunction-sections",
+                            "-fdata-sections",
+                        ],
+                    ),
+                ]),
+                with_features = [with_feature_set(features = ["opt"])],
+            ),
+            flag_set(
+                actions = [ACTION_NAMES.c_compile],
+                flag_groups = [],
+            ),
+            flag_set(
+                actions = all_cpp_compile_actions + [ACTION_NAMES.lto_backend],
+                flag_groups = ([
+                    flag_group(
+                        flags = ["-std=c++20"],
+                    ),
+                ]),
             ),
         ],
     )
@@ -159,12 +216,44 @@ def _impl(ctx):
         enabled = True,
     )
 
-    features = [
+    supports_pic_feature = feature(
+        name = "supports_pic",
+        enabled = True,
+    )
+
+    features = []
+    if use_gold:
+        supports_start_end_lib_feature = feature(
+            name = "supports_start_end_lib",
+            enabled = True,
+        )
+        features.append(supports_start_end_lib_feature)
+
+    gcc_quoting_for_param_files_feature = feature(
+        name = "gcc_quoting_for_param_files",
+        enabled = True,
+    )
+
+    static_link_cpp_runtimes_feature = feature(
+        name = "static_link_cpp_runtimes",
+        enabled = False,
+    )
+
+    dbg_feature = feature(name = "dbg")
+
+    opt_feature = feature(name = "opt")
+
+    features += [
         unfiltered_compile_flags_feature,
         default_link_flags_feature,
         default_compile_flags_feature,
         sysroot_feature,
+        dbg_feature,
+        opt_feature,
         compiler_param_feature,
+        supports_pic_feature,
+        gcc_quoting_for_param_files_feature,
+        static_link_cpp_runtimes_feature,
         archive_param_file_feature,
     ]
 

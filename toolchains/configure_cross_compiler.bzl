@@ -37,6 +37,7 @@ def configure_cross_compiler_impl(repository_ctx):
     BINARIES = [
         "ar",
         "cpp",
+        "dwp",
         "gcc",
         "gcov",
         "ld",
