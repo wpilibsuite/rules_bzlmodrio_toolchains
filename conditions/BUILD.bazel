@@ -1,13 +1,19 @@
 # Mimics @bazel_tools/src/conditions:windows
 config_setting(
-    name = "windows",
-    constraint_values = ["@platforms//os:windows"],
+    name = "windows_x86_64",
+    constraint_values = [
+        "@platforms//os:windows",
+        "@platforms//cpu:x86_64",
+    ],
     visibility = ["//visibility:public"],
 )
 
 config_setting(
-    name = "windows_debug",
-    constraint_values = ["@platforms//os:windows"],
+    name = "windows_x86_64_debug",
+    constraint_values = [
+        "@platforms//os:windows",
+        "@platforms//cpu:x86_64",
+    ],
     values = {
         "compilation_mode": "dbg",
     },
@@ -19,20 +25,18 @@ config_setting(
     name = "windows_arm64",
     constraint_values = [
         "@platforms//os:windows",
-        "@platforms//cpu:x86_64",
+        "@platforms//cpu:aarch64",
     ],
-    values = {"cpu": "x64_arm64_windows"},
 )
 
 config_setting(
     name = "windows_arm64_debug",
     constraint_values = [
         "@platforms//os:windows",
-        "@platforms//cpu:x86_64",
+        "@platforms//cpu:aarch64",
     ],
     values = {
         "compilation_mode": "dbg",
-        "cpu": "x64_arm64_windows",
     },
     visibility = ["//visibility:public"],
 )
@@ -72,6 +76,24 @@ config_setting(
     values = {
         "compilation_mode": "dbg",
     },
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "osx_x86_64",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:x86_64",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "osx_aarch64",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:aarch64",
+    ],
     visibility = ["//visibility:public"],
 )
 
