@@ -20,6 +20,12 @@ def _impl(ctx):
         ACTION_NAMES.cpp_link_nodeps_dynamic_library,
     ]
 
+    lto_index_actions = [
+        ACTION_NAMES.lto_index_for_executable,
+        ACTION_NAMES.lto_index_for_dynamic_library,
+        ACTION_NAMES.lto_index_for_nodeps_dynamic_library,
+    ]
+
     all_compile_actions = [
         ACTION_NAMES.c_compile,
         ACTION_NAMES.cpp_compile,
@@ -86,7 +92,7 @@ def _impl(ctx):
         enabled = True,
         flag_sets = [
             flag_set(
-                actions = all_link_actions,
+                actions = all_link_actions + lto_index_actions,
                 flag_groups = ([
                     flag_group(
                         flags = ([
@@ -98,6 +104,9 @@ def _impl(ctx):
                             "-lstdc++",
                             "-lm",
                             "-fno-canonical-system-headers",
+                            "-rdynamic",
+                            "-ldl",
+                            "-Wl,-rpath,'$ORIGIN'",
                         ],
                     ),
                 ]),
@@ -137,6 +146,7 @@ def _impl(ctx):
                             "-fstack-protector",
                             "-Wall",
                             "-fno-omit-frame-pointer",
+                            "-Wextra",
                         ],
                     ),
                 ]),
@@ -175,13 +185,34 @@ def _impl(ctx):
             ),
             flag_set(
                 actions = [ACTION_NAMES.c_compile],
-                flag_groups = [],
+                flag_groups = ([
+                    flag_group(
+                        flags = [
+                            "-Wformat=2",
+                            "-pedantic",
+                            "-Wno-psabi",
+                            "-Wno-unused-parameter",
+                            "-fPIC",
+                            "-pthread",
+                        ],
+                    ),
+                ]),
             ),
             flag_set(
                 actions = all_cpp_compile_actions + [ACTION_NAMES.lto_backend],
                 flag_groups = ([
                     flag_group(
-                        flags = ["-std=c++20"],
+                        flags = [
+                            "-std=c++20",
+                            "-Wno-error=deprecated-declarations",
+                            "-Wno-deprecated-enum-enum-conversion",
+                            "-Wformat=2",
+                            "-pedantic",
+                            "-Wno-psabi",
+                            "-Wno-unused-parameter",
+                            "-fPIC",
+                            "-pthread",
+                        ],
                     ),
                 ]),
             ),
@@ -209,6 +240,24 @@ def _impl(ctx):
 
     compiler_param_feature = feature(
         name = "compiler_param_file",
+        enabled = True,
+    )
+
+    treat_warnings_as_errors_feature = feature(
+        name = "treat_warnings_as_errors",
+        enabled = True,
+        flag_sets = [
+            flag_set(
+                actions = [ACTION_NAMES.c_compile, ACTION_NAMES.cpp_compile],
+                flag_groups = [flag_group(flags = ["-Werror"])],
+            ),
+            flag_set(
+                actions = all_link_actions,
+                flag_groups = [flag_group(
+                    flags = ["-Wl,-fatal-warnings"],
+                )],
+            ),
+        ],
     )
 
     archive_param_file_feature = feature(
@@ -243,10 +292,31 @@ def _impl(ctx):
 
     opt_feature = feature(name = "opt")
 
+    set_install_name_feature = feature(
+        name = "set_soname",
+        flag_sets = [
+            flag_set(
+                actions = [
+                    ACTION_NAMES.cpp_link_dynamic_library,
+                    ACTION_NAMES.cpp_link_nodeps_dynamic_library,
+                ],
+                flag_groups = [
+                    flag_group(
+                        flags = [
+                            "-Wl,-soname,%{runtime_solib_name}",
+                        ],
+                        expand_if_available = "runtime_solib_name",
+                    ),
+                ],
+            ),
+        ],
+    )
+
     features += [
         unfiltered_compile_flags_feature,
         default_link_flags_feature,
         default_compile_flags_feature,
+        treat_warnings_as_errors_feature,
         sysroot_feature,
         dbg_feature,
         opt_feature,
@@ -255,6 +325,7 @@ def _impl(ctx):
         gcc_quoting_for_param_files_feature,
         static_link_cpp_runtimes_feature,
         archive_param_file_feature,
+        set_install_name_feature,
     ]
 
     return cc_common.create_cc_toolchain_config_info(
