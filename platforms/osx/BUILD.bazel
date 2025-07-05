@@ -1,0 +1,9 @@
+load("@platforms//host:constraints.bzl", _host_constraints = "HOST_CONSTRAINTS")
+
+platform(
+    name = "osx",
+    constraint_values = [
+        "@platforms//os:osx",
+    ] + [x for x in _host_constraints if x.startswith("@platforms//cpu:")],
+    visibility = ["//visibility:public"],
+)
