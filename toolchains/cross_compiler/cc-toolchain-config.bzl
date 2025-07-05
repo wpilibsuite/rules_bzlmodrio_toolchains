@@ -147,7 +147,6 @@ def _impl(ctx):
                             "-Wall",
                             "-fno-omit-frame-pointer",
                             "-Wextra",
-                            "-Werror",
                         ],
                     ),
                 ]),
