@@ -103,6 +103,7 @@ def cc_shared_import(
         shared_library = shared_library_file,
         hdrs = hdrs,
         includes = includes,
+        visibility = visibility,
         target_compatible_with = target_compatible_with,
     )
 
