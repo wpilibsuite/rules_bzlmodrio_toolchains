@@ -1,4 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_import")
+load("@rules_cc//cc/common:cc_info.bzl", "CcInfo")
 load("@rules_cc//cc/common:cc_shared_library_info.bzl", "CcSharedLibraryInfo")
 
 def _cc_shared_info_adapter_impl(ctx):
@@ -44,13 +45,13 @@ def _cc_shared_info_adapter_impl(ctx):
 _cc_shared_info_adapter = rule(
     implementation = _cc_shared_info_adapter_impl,
     attrs = {
-        "static_dep": attr.label(
-            doc = "The cc_import target to adapt.",
+        "dynamic_dep": attr.label(
+            doc = "The cc_import target to use for dynamic linking.",
             providers = [CcInfo, DefaultInfo],
             mandatory = True,
         ),
-        "dynamic_dep": attr.label(
-            doc = "The cc_import target to adapt.",
+        "static_dep": attr.label(
+            doc = "The cc_import target to use for normal linking.",
             providers = [CcInfo, DefaultInfo],
             mandatory = True,
         ),
