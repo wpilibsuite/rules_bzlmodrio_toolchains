@@ -73,6 +73,7 @@ def cc_shared_import(
       static_library_file: The prebuilt file for the static library.
       hdrs: The headers to export
     """
+
     # Windows has both DLLs, and interface libraries used to link those DLLs.
     # Do the stupid thing and detect if we are on Windows by looking for .dll,
     # and if so, assume there will be an interface library sitting next to it.
