@@ -1,5 +1,5 @@
 def configure_cross_compiler_impl(repository_ctx):
-    target_name = repository_ctx.attr.target
+    extra_defines = repository_ctx.attr.extra_defines
 
     substitutions = {
         "{arg_passthrough}": '"$@"',
@@ -13,7 +13,7 @@ def configure_cross_compiler_impl(repository_ctx):
         "{sep}": "/",
         "{sysroot_include_folder}": repository_ctx.attr.sysroot_include_folder,
         "{sysroot}": repository_ctx.attr.sysroot_subfolder,
-        "{target}": target_name,
+        "{extra_defines}": str(extra_defines),
         "{tool_platform_suffix}": "",
         "{wrapper_extension}": "",
     }
@@ -87,7 +87,7 @@ configure_cross_compiler = repository_rule(
         "repo_shortname": attr.string(mandatory = True),
         "sysroot_include_folder": attr.string(mandatory = True),
         "sysroot_subfolder": attr.string(mandatory = True),
-        "target": attr.string(mandatory = True),
+        "extra_defines": attr.string_list(mandatory = False),
         "target_cpu": attr.string(mandatory = True),
         "target_system_name": attr.string(mandatory = True),
     },

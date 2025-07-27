@@ -92,8 +92,7 @@ def _impl(ctx):
                             "-D__DATE__=\"redacted\"",
                             "-D__TIMESTAMP__=\"redacted\"",
                             "-D__TIME__=\"redacted\"",
-                            "-D__FRC_" + ctx.attr.target.upper().replace("-", "_") + "__=1",
-                        ],
+                        ] + ctx.attr.extra_defines,
                     ),
                 ],
             ),
@@ -361,7 +360,7 @@ def _impl(ctx):
 cc_toolchain_config = rule(
     attrs = {
         "cxx_builtin_include_directories": attr.string_list(mandatory = True),
-        "target": attr.string(mandatory = True),
+        "extra_defines": attr.string_list(),
         "target_cpu": attr.string(mandatory = True),
         "target_system_name": attr.string(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),

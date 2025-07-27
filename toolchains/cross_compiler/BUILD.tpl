@@ -26,7 +26,7 @@ cc_toolchain_config(
     wrapper_extension = "{wrapper_extension}",
     target_cpu = "{target_cpu}",
     target_system_name = "{target_system_name}",
-    target = "{target}",
+    extra_defines = {extra_defines},
     cxx_builtin_include_directories=cxx_builtin_include_directories
 )
 

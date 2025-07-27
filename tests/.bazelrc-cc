@@ -43,24 +43,24 @@ build:macos --cxxopt=-Wno-error=overloaded-virtual
 # roborio
 build:roborio --incompatible_enable_cc_toolchain_resolution
 build:roborio --copt=-std=c++20
-build:roborio --features=-compiler_param_file
+build:roborio --features=compiler_param_file
 
 # systemcore
 build:systemcore --incompatible_enable_cc_toolchain_resolution
 build:systemcore --copt=-std=c++20
-build:systemcore --features=-compiler_param_file
+build:systemcore --features=compiler_param_file
 
 # bookworm32
 build:bookworm32 --incompatible_enable_cc_toolchain_resolution
 build:bookworm32 --copt=-std=c++20
-build:bookworm32 --features=-compiler_param_file
+build:bookworm32 --features=compiler_param_file
 
 # bookworm64
 build:bookworm64 --incompatible_enable_cc_toolchain_resolution
 build:bookworm64 --copt=-std=c++20
-build:bookworm64 --features=-compiler_param_file
+build:bookworm64 --features=compiler_param_file
 
 # raspibookworm32
 build:raspibookworm32 --incompatible_enable_cc_toolchain_resolution
 build:raspibookworm32 --copt=-std=c++20
-build:raspibookworm32 --features=-compiler_param_file
+build:raspibookworm32 --features=compiler_param_file

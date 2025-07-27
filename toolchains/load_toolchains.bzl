@@ -3,7 +3,6 @@ load("//toolchains:configure_cross_compiler.bzl", "configure_cross_compiler")
 def load_toolchains():
     configure_cross_compiler(
         name = "local_bookworm_32",
-        target = "bookworm-32",
         bin_subfolder = "bookworm/bin",
         bin_prefix = "armv7-bookworm-linux-gnueabihf-",
         sysroot_subfolder = "bookworm/arm-linux-gnueabihf/sysroot",
@@ -15,7 +14,6 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_bookworm_64",
-        target = "bookworm-64",
         bin_subfolder = "bookworm/bin",
         bin_prefix = "aarch64-bookworm-linux-gnu-",
         sysroot_subfolder = "bookworm/aarch64-linux-gnu/sysroot",
@@ -27,7 +25,6 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_raspi_bookworm_32",
-        target = "raspi-bookworm-32",
         bin_subfolder = "raspi-bookworm/bin",
         bin_prefix = "armv6-bookworm-linux-gnueabihf-",
         sysroot_subfolder = "raspi-bookworm/arm-linux-gnueabihf/sysroot",
@@ -39,7 +36,6 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_roborio",
-        target = "roborio",
         bin_subfolder = "roborio-academic/bin",
         bin_prefix = "arm-frc2025-linux-gnueabi-",
         sysroot_subfolder = "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
@@ -51,7 +47,7 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_systemcore",
-        target = "systemcore",
+        extra_defines = ["-D__FRC_SYSTEMCORE__=1"],
         bin_subfolder = "bookworm/bin",
         bin_prefix = "aarch64-bookworm-linux-gnu-",
         sysroot_subfolder = "bookworm/aarch64-linux-gnu/sysroot",

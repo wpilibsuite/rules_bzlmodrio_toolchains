@@ -124,8 +124,8 @@
     },
     "@@rules_bzlmodrio_toolchains~//:extensions.bzl%sh_configure": {
       "general": {
-        "bzlTransitiveDigest": "AVhEMHAP/dENCg4q1IeXLM5tYhqMuoBgEV2P+M7goCk=",
-        "usagesDigest": "O2WDrylKG+RptVUr8JAenwajoRLhEXUiTailvdVW+ic=",
+        "bzlTransitiveDigest": "8ngye1DDhVT32QHPwalbPEOJf6GEcXuTzgeVI3TD3hs=",
+        "usagesDigest": "JrHwkE8VDpY7ZPT/LqOFkiIfnRuEM7GxGyJulhBdMbE=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -134,7 +134,6 @@
             "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "target": "roborio",
               "bin_subfolder": "roborio-academic/bin",
               "bin_prefix": "arm-frc2025-linux-gnueabi-",
               "sysroot_subfolder": "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
@@ -149,7 +148,6 @@
             "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "target": "raspi-bookworm-32",
               "bin_subfolder": "raspi-bookworm/bin",
               "bin_prefix": "armv6-bookworm-linux-gnueabihf-",
               "sysroot_subfolder": "raspi-bookworm/arm-linux-gnueabihf/sysroot",
@@ -164,7 +162,6 @@
             "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "target": "bookworm-32",
               "bin_subfolder": "bookworm/bin",
               "bin_prefix": "armv7-bookworm-linux-gnueabihf-",
               "sysroot_subfolder": "bookworm/arm-linux-gnueabihf/sysroot",
@@ -179,7 +176,6 @@
             "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "target": "bookworm-64",
               "bin_subfolder": "bookworm/bin",
               "bin_prefix": "aarch64-bookworm-linux-gnu-",
               "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
@@ -194,7 +190,9 @@
             "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "target": "systemcore",
+              "extra_defines": [
+                "-D__FRC_SYSTEMCORE__=1"
+              ],
               "bin_subfolder": "bookworm/bin",
               "bin_prefix": "aarch64-bookworm-linux-gnu-",
               "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
@@ -212,7 +210,7 @@
     "@@rules_bzlmodrio_toolchains~//:maven_deps.bzl%deps": {
       "general": {
         "bzlTransitiveDigest": "QtH5I0N/YrhFhAhA+8ldIGzTru7SoZ59eAbEvLkkiCM=",
-        "usagesDigest": "oh/6421nmic91Jf0/3r92BYXhYLcvz0iEm6pS0KT8QY=",
+        "usagesDigest": "Ly+Zdb5x51ORGPDU79gLogWbFPUo2Dii0H/ROLI8abc=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
