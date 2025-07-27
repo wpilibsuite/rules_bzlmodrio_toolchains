@@ -1,12 +1,12 @@
 def configure_cross_compiler_impl(repository_ctx):
-    compiler_name = repository_ctx.attr.compiler
+    target_name = repository_ctx.attr.target
 
     substitutions = {
         "{arg_passthrough}": '"$@"',
         "{bin_subfolder}": repository_ctx.attr.bin_subfolder,
         "{binary_prefix}": repository_ctx.attr.bin_prefix,
         "{command_prefix}": "",
-        "{compiler}": compiler_name,
+        "{target}": target_name,
         "{cxx_version}": repository_ctx.attr.cxx_version,
         "{exe_suffix}": "",
         "{repo_short_name_no_dash}": repository_ctx.attr.repo_shortname.replace("_", ""),
@@ -47,6 +47,7 @@ def configure_cross_compiler_impl(repository_ctx):
         "nm",
         "objdump",
         "strip",
+        "objcopy",
     ]
 
     compiler_workspace = Label("@" + substitutions["{compiler_repo}"]).workspace_name
@@ -82,7 +83,7 @@ configure_cross_compiler = repository_rule(
     attrs = {
         "bin_prefix": attr.string(mandatory = True),
         "bin_subfolder": attr.string(mandatory = True),
-        "compiler": attr.string(mandatory = True),
+        "target": attr.string(mandatory = True),
         "cxx_version": attr.string(mandatory = True),
         "repo_shortname": attr.string(mandatory = True),
         "sysroot_include_folder": attr.string(mandatory = True),
