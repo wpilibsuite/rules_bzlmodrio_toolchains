@@ -6,13 +6,6 @@
 #error "This shouldn't happen"
 #endif
 
-// Bullseye Toolchain
-#if defined(__CROSS_BULLSEYE__) && IS_BULLSEYE_TEST == 0
-#error "This shouldn't happen"
-#elif !defined(__CROSS_BULLSEYE__) and IS_BULLSEYE_TEST == 1
-#error "This shouldn't happen"
-#endif
-
 // Raspbian Toolchain
 #if defined(__RASPBIAN__) && IS_RASPBIAN_TEST == 0
 #error "This shouldn't happen"
