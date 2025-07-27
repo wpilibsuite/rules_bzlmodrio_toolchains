@@ -361,11 +361,11 @@ def _impl(ctx):
 cc_toolchain_config = rule(
     attrs = {
         "cxx_builtin_include_directories": attr.string_list(mandatory = True),
+        "target": attr.string(mandatory = True),
         "target_cpu": attr.string(mandatory = True),
         "target_system_name": attr.string(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),
         "wrapper_extension": attr.string(mandatory = True),
-        "target": attr.string(mandatory = True),
     },
     provides = [CcToolchainConfigInfo],
     implementation = _impl,
