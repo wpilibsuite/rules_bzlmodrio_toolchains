@@ -79,8 +79,8 @@
   "moduleExtensions": {
     "//:extensions.bzl%sh_configure": {
       "general": {
-        "bzlTransitiveDigest": "8asfDpytFImZW8dzgP3tkiqxhYEL2ULs9VRv0o8STOg=",
-        "usagesDigest": "r2KjwjYKtSDwZGxQ6B+ZKhbgvWGphtEoEeJVxfKPlHU=",
+        "bzlTransitiveDigest": "fwpedNPqRX5NJXITtZ17Yt4t4PlHp/h5KXlV40n1S1k=",
+        "usagesDigest": "cqOGKEZcarhSaKZebIL//H/wdq+fZbe3N6Xx6+Kb+qY=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -89,7 +89,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "bullseye-64",
+              "target": "bullseye-64",
               "bin_subfolder": "bullseye/bin",
               "bin_prefix": "aarch64-bullseye-linux-gnu-",
               "sysroot_subfolder": "bullseye/aarch64-linux-gnu/sysroot",
@@ -104,7 +104,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "roborio",
+              "target": "roborio",
               "bin_subfolder": "roborio-academic/bin",
               "bin_prefix": "arm-frc2025-linux-gnueabi-",
               "sysroot_subfolder": "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
@@ -119,7 +119,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "bullseye-32",
+              "target": "bullseye-32",
               "bin_subfolder": "bullseye/bin",
               "bin_prefix": "armv7-bullseye-linux-gnueabihf-",
               "sysroot_subfolder": "bullseye/arm-linux-gnueabihf/sysroot",
@@ -134,7 +134,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "raspi-bookworm-32",
+              "target": "raspi-bookworm-32",
               "bin_subfolder": "raspi-bookworm/bin",
               "bin_prefix": "armv6-bookworm-linux-gnueabihf-",
               "sysroot_subfolder": "raspi-bookworm/arm-linux-gnueabihf/sysroot",
@@ -149,7 +149,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "bookworm-32",
+              "target": "bookworm-32",
               "bin_subfolder": "bookworm/bin",
               "bin_prefix": "armv7-bookworm-linux-gnueabihf-",
               "sysroot_subfolder": "bookworm/arm-linux-gnueabihf/sysroot",
@@ -164,7 +164,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "bookworm-64",
+              "target": "bookworm-64",
               "bin_subfolder": "bookworm/bin",
               "bin_prefix": "aarch64-bookworm-linux-gnu-",
               "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
@@ -179,7 +179,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "raspi-bullseye-32",
+              "target": "raspi-bullseye-32",
               "bin_subfolder": "raspi-bullseye/bin",
               "bin_prefix": "armv6-bullseye-linux-gnueabihf-",
               "sysroot_subfolder": "raspi-bullseye/arm-linux-gnueabihf/sysroot",
@@ -194,7 +194,7 @@
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "compiler": "systemcore",
+              "target": "systemcore",
               "bin_subfolder": "bookworm/bin",
               "bin_prefix": "aarch64-bookworm-linux-gnu-",
               "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
