@@ -50,16 +50,6 @@ build:systemcore --incompatible_enable_cc_toolchain_resolution
 build:systemcore --copt=-std=c++20
 build:systemcore --features=compiler_param_file
 
-# bullseye32
-build:bullseye32 --incompatible_enable_cc_toolchain_resolution
-build:bullseye32 --copt=-std=c++20
-build:bullseye32 --features=compiler_param_file
-
-# bullseye64
-build:bullseye64 --incompatible_enable_cc_toolchain_resolution
-build:bullseye64 --copt=-std=c++20
-build:bullseye64 --features=compiler_param_file
-
 # bookworm32
 build:bookworm32 --incompatible_enable_cc_toolchain_resolution
 build:bookworm32 --copt=-std=c++20
@@ -69,11 +59,6 @@ build:bookworm32 --features=compiler_param_file
 build:bookworm64 --incompatible_enable_cc_toolchain_resolution
 build:bookworm64 --copt=-std=c++20
 build:bookworm64 --features=compiler_param_file
-
-# raspibullseye32
-build:raspibullseye32 --incompatible_enable_cc_toolchain_resolution
-build:raspibullseye32 --copt=-std=c++20
-build:raspibullseye32 --features=compiler_param_file
 
 # raspibookworm32
 build:raspibookworm32 --incompatible_enable_cc_toolchain_resolution

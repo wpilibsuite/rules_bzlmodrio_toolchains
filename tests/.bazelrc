@@ -18,16 +18,6 @@ build:systemcore --platforms=@rules_bzlmodrio_toolchains//platforms/systemcore
 build:systemcore --build_tag_filters=-no-systemcore
 build:systemcore --platform_suffix=systemcore
 
-# bullseye32
-build:bullseye32 --platforms=@rules_bzlmodrio_toolchains//platforms/bullseye32
-build:bullseye32 --build_tag_filters=-no-bullseye32
-build:bullseye32 --platform_suffix=bullseye32
-
-# bullseye64
-build:bullseye64 --platforms=@rules_bzlmodrio_toolchains//platforms/bullseye64
-build:bullseye64 --build_tag_filters=-no-bullseye64
-build:bullseye64 --platform_suffix=bullseye64
-
 # bookworm32
 build:bookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm32
 build:bookworm32 --build_tag_filters=-no-bookworm32
@@ -37,11 +27,6 @@ build:bookworm32 --platform_suffix=bookworm32
 build:bookworm64 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm64
 build:bookworm64 --build_tag_filters=-no-bookworm64
 build:bookworm64 --platform_suffix=bookworm64
-
-# raspibullseye32
-build:raspibullseye32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspibullseye32
-build:raspibullseye32 --build_tag_filters=-no-raspibullseye32
-build:raspibullseye32 --platform_suffix=raspibullseye32
 
 # raspibookworm32
 build:raspibookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspibookworm32

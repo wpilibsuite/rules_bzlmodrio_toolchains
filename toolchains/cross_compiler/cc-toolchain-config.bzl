@@ -1,9 +1,11 @@
 load("@bazel_tools//tools/build_defs/cc:action_names.bzl", "ACTION_NAMES")
 load(
     "@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
+    "action_config",
     "feature",
     "flag_group",
     "flag_set",
+    "tool",
     "tool_path",
     "with_feature_set",
 )
@@ -64,6 +66,16 @@ def _impl(ctx):
         tool_path(name = "objcopy", path = "bin/objcopy" + wrapper_extension),
     ]
 
+    objcopy_action = action_config(
+        action_name = ACTION_NAMES.objcopy_embed_data,
+        tools = [
+            tool(
+                path = "bin/objcopy" + wrapper_extension,
+            ),
+        ],
+    )
+    action_configs = [objcopy_action]
+
     unfiltered_compile_flags_feature = feature(
         name = "unfiltered_compile_flags",
         enabled = True,
@@ -80,7 +92,7 @@ def _impl(ctx):
                             "-D__DATE__=\"redacted\"",
                             "-D__TIMESTAMP__=\"redacted\"",
                             "-D__TIME__=\"redacted\"",
-                        ],
+                        ] + ctx.attr.extra_defines,
                     ),
                 ],
             ),
@@ -331,6 +343,7 @@ def _impl(ctx):
     return cc_common.create_cc_toolchain_config_info(
         ctx = ctx,
         features = features,
+        action_configs = action_configs,
         toolchain_identifier = ctx.attr.toolchain_identifier,
         host_system_name = "local",
         target_system_name = ctx.attr.target_system_name,
@@ -342,12 +355,12 @@ def _impl(ctx):
         abi_libc_version = "glibc-2.24",
         tool_paths = tool_paths,
         cxx_builtin_include_directories = cxx_builtin_include_directories,
-        # builtin_sysroot = ctx.attr.builtin_sysroot,
     )
 
 cc_toolchain_config = rule(
     attrs = {
         "cxx_builtin_include_directories": attr.string_list(mandatory = True),
+        "extra_defines": attr.string_list(),
         "target_cpu": attr.string(mandatory = True),
         "target_system_name": attr.string(mandatory = True),
         "toolchain_identifier": attr.string(mandatory = True),
