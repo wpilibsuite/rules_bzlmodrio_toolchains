@@ -3,6 +3,7 @@ platform(
     constraint_values = [
         "@platforms//os:linux",
         "@platforms//cpu:armv7",
+        "@bazel_tools//tools/cpp:gcc",
         "//constraints/is_roborio:true",
     ],
     visibility = ["//visibility:public"],

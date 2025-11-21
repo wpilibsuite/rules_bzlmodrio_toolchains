@@ -3,6 +3,7 @@ platform(
     constraint_values = [
         "@platforms//os:linux",
         "@platforms//cpu:armv7",
+        "@bazel_tools//tools/cpp:gcc",
         "//constraints/is_raspibookworm32:true",
     ],
     visibility = ["//visibility:public"],
