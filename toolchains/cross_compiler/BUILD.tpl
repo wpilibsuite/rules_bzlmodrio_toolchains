@@ -56,7 +56,10 @@ toolchain(
         "@platforms//cpu:x86_64",
         "@platforms//os:windows",
     ],
-    target_compatible_with = ["@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true"],
+    target_compatible_with = [
+        "@bazel_tools//tools/cpp:gcc",
+        "@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true",
+    ],
     toolchain = cc_toolchain_name,
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
@@ -67,7 +70,10 @@ toolchain(
         "@platforms//cpu:x86_64",
         "@platforms//os:linux",
     ],
-    target_compatible_with = ["@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true"],
+    target_compatible_with = [
+        "@bazel_tools//tools/cpp:gcc",
+        "@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true",
+    ],
     toolchain = cc_toolchain_name,
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
@@ -78,7 +84,10 @@ toolchain(
         # assuming x86/ARM Macs use the same x86 WPILib toolchain
         "@platforms//os:osx",
     ],
-    target_compatible_with = ["@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true"],
+    target_compatible_with = [
+        "@bazel_tools//tools/cpp:gcc",
+        "@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true",
+    ],
     toolchain = cc_toolchain_name,
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
