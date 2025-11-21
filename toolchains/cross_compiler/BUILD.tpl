@@ -57,6 +57,7 @@ toolchain(
         "@platforms//os:windows",
     ],
     target_compatible_with = [
+        "@platforms//os:linux",
         "@bazel_tools//tools/cpp:gcc",
         "@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true",
     ],
@@ -71,6 +72,7 @@ toolchain(
         "@platforms//os:linux",
     ],
     target_compatible_with = [
+        "@platforms//os:linux",
         "@bazel_tools//tools/cpp:gcc",
         "@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true",
     ],
@@ -85,6 +87,7 @@ toolchain(
         "@platforms//os:osx",
     ],
     target_compatible_with = [
+        "@platforms//os:linux",
         "@bazel_tools//tools/cpp:gcc",
         "@rules_bzlmodrio_toolchains//constraints/is_{repo_short_name_no_dash}:true",
     ],
