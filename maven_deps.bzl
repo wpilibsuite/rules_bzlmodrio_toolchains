@@ -44,28 +44,28 @@ def __setup_toolchains_dependencies(mctx):
     # bookworm-64
     maybe(
         http_archive,
-        "gcc_bookworm_64_macosarm",
+        "gcc_bookworm64_macosarm",
         url = "https://github.com/wpilibsuite/opensdk/releases/download/" + release + "/arm64-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
         sha256 = "4082238f6c726c9105cd85c52cfea80349ac57737e6a3915aa896246a201a5b7",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
-        "gcc_bookworm_64_macos",
+        "gcc_bookworm64_macos",
         url = "https://github.com/wpilibsuite/opensdk/releases/download/" + release + "/arm64-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz",
         sha256 = "6900a02b447d89fa31e7872071c1264b20188cb0c2456a634706bf884f3016ea",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
-        "gcc_bookworm_64_linux",
+        "gcc_bookworm64_linux",
         url = "https://github.com/wpilibsuite/opensdk/releases/download/" + release + "/arm64-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz",
         sha256 = "7682bac991f106627ce6bd38c1f4dd552931700f3aee73534b4c10f119ad2899",
         build_file_content = filegroup_all,
     )
     maybe(
         http_archive,
-        "gcc_bookworm_64_win",
+        "gcc_bookworm64_win",
         url = "https://github.com/wpilibsuite/opensdk/releases/download/" + release + "/arm64-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip",
         sha256 = "258d0209ec43302cd2b9e4ce7808f163db14a66a85383bd1880c4083f09dd22f",
         build_file_content = filegroup_all,
