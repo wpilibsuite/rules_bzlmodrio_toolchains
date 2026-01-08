@@ -34,7 +34,7 @@ use_repo(
 )
 
 cfg = use_extension("@rules_bzlmodrio_toolchains//:extensions.bzl", "cfg")
-use_repo(cfg, "local_bookworm32", "local_bookworm64", "local_rp_bookworm32", "local_roborio", "local_systemcore")
+use_repo(cfg, "local_bookworm32", "local_bookworm64", "local_roborio", "local_rp_bookworm32", "local_systemcore")
 
 register_toolchains(
     "@local_bookworm32//:macos",
