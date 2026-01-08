@@ -28,14 +28,14 @@ build:bookworm64 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm64
 build:bookworm64 --build_tag_filters=-no-bookworm64
 build:bookworm64 --platform_suffix=bookworm64
 
-# raspibookworm32
-build:raspibookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/raspibookworm32
-build:raspibookworm32 --build_tag_filters=-no-raspibookworm32
-build:raspibookworm32 --platform_suffix=raspibookworm32
+# rpbookworm32
+build:rpbookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/rpbookworm32
+build:rpbookworm32 --build_tag_filters=-no-rpbookworm32
+build:rpbookworm32 --platform_suffix=rpbookworm32
 
 # Alias toolchain names to what wpilibsuite uses for CI/Artifact naming
 build:athena --config=roborio
-build:linuxarm32 --config=raspibookworm32
+build:linuxarm32 --config=rpbookworm32
 build:linuxarm64 --config=bookworm64
 
 test --test_output=errors

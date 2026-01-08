@@ -21,7 +21,7 @@ def configure_cross_compiler_impl(repository_ctx):
     if repository_ctx.os.name.startswith("windows"):
         substitutions["{command_prefix}"] = "@echo off\n"
         substitutions["{tool_platform_suffix}"] = ".exe"
-        substitutions["{compiler_repo}"] = "bazelrio_{}_toolchain_windows".format(repository_ctx.attr.repo_shortname)
+        substitutions["{compiler_repo}"] = "gcc_{}_win".format(repository_ctx.attr.repo_shortname)
         substitutions["{sep}"] = "\\"
         substitutions["{bin_subfolder}"] = substitutions["{bin_subfolder}"].replace("/", "\\")
 
@@ -29,11 +29,11 @@ def configure_cross_compiler_impl(repository_ctx):
         substitutions["{wrapper_extension}"] = ".bat"
     elif repository_ctx.os.name == "mac os x":
         if repository_ctx.os.arch == "aarch64":
-            substitutions["{compiler_repo}"] = "bazelrio_{}_toolchain_macosarm".format(repository_ctx.attr.repo_shortname)
+            substitutions["{compiler_repo}"] = "gcc_{}_macosarm".format(repository_ctx.attr.repo_shortname)
         else:
-            substitutions["{compiler_repo}"] = "bazelrio_{}_toolchain_macos".format(repository_ctx.attr.repo_shortname)
+            substitutions["{compiler_repo}"] = "gcc_{}_macos".format(repository_ctx.attr.repo_shortname)
     elif repository_ctx.os.name == "linux":
-        substitutions["{compiler_repo}"] = "bazelrio_{}_toolchain_linux".format(repository_ctx.attr.repo_shortname)
+        substitutions["{compiler_repo}"] = "gcc_{}_linux".format(repository_ctx.attr.repo_shortname)
     else:
         fail("Unknown os " + repository_ctx.os.name)
 
