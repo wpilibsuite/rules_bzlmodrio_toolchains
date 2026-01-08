@@ -1,27 +1,27 @@
 constraint_setting(
-    name = "is_raspibookworm32",
+    name = "is_rpbookworm32",
     default_constraint_value = ":false",
 )
 
 constraint_value(
     name = "true",
-    constraint_setting = ":is_raspibookworm32",
+    constraint_setting = ":is_rpbookworm32",
     visibility = ["//visibility:public"],
 )
 
 constraint_value(
     name = "false",
-    constraint_setting = ":is_raspibookworm32",
+    constraint_setting = ":is_rpbookworm32",
 )
 
 config_setting(
-    name = "raspibookworm32",
+    name = "rpbookworm32",
     constraint_values = [":true"],
     visibility = ["//visibility:public"],
 )
 
 config_setting(
-    name = "raspibookworm32_debug",
+    name = "rpbookworm32_debug",
     constraint_values = [":true"],
     values = {
         "compilation_mode": "dbg",

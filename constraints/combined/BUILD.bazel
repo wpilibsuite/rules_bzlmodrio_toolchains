@@ -7,7 +7,7 @@ selects.config_setting_group(
         "//constraints/is_systemcore:systemcore",
         "//constraints/is_bookworm32:bookworm32",
         "//constraints/is_bookworm64:bookworm64",
-        "//constraints/is_raspibookworm32:raspibookworm32",
+        "//constraints/is_rpbookworm32:rpbookworm32",
     ],
 )
 

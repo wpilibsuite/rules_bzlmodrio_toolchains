@@ -122,10 +122,10 @@
         "recordedRepoMappingEntries": []
       }
     },
-    "@@rules_bzlmodrio_toolchains~//:extensions.bzl%sh_configure": {
+    "@@rules_bzlmodrio_toolchains~//:extensions.bzl%cfg": {
       "general": {
-        "bzlTransitiveDigest": "8ngye1DDhVT32QHPwalbPEOJf6GEcXuTzgeVI3TD3hs=",
-        "usagesDigest": "JrHwkE8VDpY7ZPT/LqOFkiIfnRuEM7GxGyJulhBdMbE=",
+        "bzlTransitiveDigest": "DhgJ+yfXuTo6NfJqy0Yk6AMrlg1mqXZVqmE/ndVBgjE=",
+        "usagesDigest": "LFB/PvpsIZ6LBd3XD4kf6VWGmC9eRP5lPQBXLPFnmRQ=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -144,7 +144,7 @@
               "repo_shortname": "roborio"
             }
           },
-          "local_raspi_bookworm_32": {
+          "local_rp_bookworm32": {
             "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
@@ -155,35 +155,7 @@
               "target_cpu": "armv7",
               "target_system_name": "arm-linux-gnueabihf",
               "sysroot_include_folder": "arm-linux-gnueabihf",
-              "repo_shortname": "raspi_bookworm_32"
-            }
-          },
-          "local_bookworm_32": {
-            "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
-            "ruleClassName": "configure_cross_compiler",
-            "attributes": {
-              "bin_subfolder": "bookworm/bin",
-              "bin_prefix": "armv7-bookworm-linux-gnueabihf-",
-              "sysroot_subfolder": "bookworm/arm-linux-gnueabihf/sysroot",
-              "cxx_version": "12",
-              "target_cpu": "armv7",
-              "target_system_name": "arm-linux-gnueabihf",
-              "sysroot_include_folder": "arm-linux-gnueabihf",
-              "repo_shortname": "bookworm_32"
-            }
-          },
-          "local_bookworm_64": {
-            "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
-            "ruleClassName": "configure_cross_compiler",
-            "attributes": {
-              "bin_subfolder": "bookworm/bin",
-              "bin_prefix": "aarch64-bookworm-linux-gnu-",
-              "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
-              "cxx_version": "12",
-              "target_cpu": "armv8a",
-              "target_system_name": "aarch64-linux-gnu",
-              "sysroot_include_folder": "aarch64-linux-gnu",
-              "repo_shortname": "bookworm_64"
+              "repo_shortname": "rp_bookworm32"
             }
           },
           "local_systemcore": {
@@ -201,6 +173,34 @@
               "target_system_name": "aarch64-linux-gnu",
               "sysroot_include_folder": "aarch64-linux-gnu",
               "repo_shortname": "systemcore"
+            }
+          },
+          "local_bookworm64": {
+            "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
+            "ruleClassName": "configure_cross_compiler",
+            "attributes": {
+              "bin_subfolder": "bookworm/bin",
+              "bin_prefix": "aarch64-bookworm-linux-gnu-",
+              "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
+              "cxx_version": "12",
+              "target_cpu": "armv8a",
+              "target_system_name": "aarch64-linux-gnu",
+              "sysroot_include_folder": "aarch64-linux-gnu",
+              "repo_shortname": "bookworm64"
+            }
+          },
+          "local_bookworm32": {
+            "bzlFile": "@@rules_bzlmodrio_toolchains~//toolchains:configure_cross_compiler.bzl",
+            "ruleClassName": "configure_cross_compiler",
+            "attributes": {
+              "bin_subfolder": "bookworm/bin",
+              "bin_prefix": "armv7-bookworm-linux-gnueabihf-",
+              "sysroot_subfolder": "bookworm/arm-linux-gnueabihf/sysroot",
+              "cxx_version": "12",
+              "target_cpu": "armv7",
+              "target_system_name": "arm-linux-gnueabihf",
+              "sysroot_include_folder": "arm-linux-gnueabihf",
+              "repo_shortname": "bookworm32"
             }
           }
         },

@@ -8,8 +8,8 @@ def __helper(is_roborio, is_raspi):
 
 def defines_helper():
     output = {
-        "@rules_bzlmodrio_toolchains//constraints/is_raspibookworm32:raspibookworm32": __helper(is_roborio = False, is_raspi = True),
         "@rules_bzlmodrio_toolchains//constraints/is_roborio:roborio": __helper(is_roborio = True, is_raspi = False),
+        "@rules_bzlmodrio_toolchains//constraints/is_rpbookworm32:rpbookworm32": __helper(is_roborio = False, is_raspi = True),
         "//conditions:default": __helper(is_roborio = False, is_raspi = False),
     }
 

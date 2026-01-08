@@ -1,9 +1,9 @@
 platform(
-    name = "raspibookworm32",
+    name = "rpbookworm32",
     constraint_values = [
         "@platforms//os:linux",
         "@platforms//cpu:armv7",
-        "//constraints/is_raspibookworm32:true",
+        "//constraints/is_rpbookworm32:true",
     ],
     visibility = ["//visibility:public"],
 )
