@@ -1,6 +1,6 @@
 module(
     name = "rules_bzlmodrio_toolchains",
-    version = "2025-1.bcr6",
+    version = "2025-1.bcr7",
     compatibility_level = 2025,
 )
 
