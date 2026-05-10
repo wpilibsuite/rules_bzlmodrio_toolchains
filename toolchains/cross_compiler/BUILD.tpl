@@ -1,4 +1,5 @@
 load(":cc-toolchain-config.bzl", "cc_toolchain_config")
+load("@rules_cc//cc:defs.bzl", "cc_toolchain", "cc_toolchain_suite")
 tag = "{target_cpu}"
 
 cc_toolchain_config_name = "cc-toolchain_config-{}".format(tag)
