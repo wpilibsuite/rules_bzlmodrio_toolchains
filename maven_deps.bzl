@@ -161,9 +161,6 @@ def __setup_toolchains_dependencies(mctx):
         build_file_content = filegroup_all,
     )
 
-def setup_legacy_setup_toolchains_dependencies():
-    __setup_toolchains_dependencies(None)
-
 deps = module_extension(
     __setup_toolchains_dependencies,
 )
