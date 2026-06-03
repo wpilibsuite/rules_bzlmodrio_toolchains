@@ -1,5 +1,5 @@
 module(
-    name = "rules_bzlmodrio_toolchains",
+    name = "wpilib_toolchains",
     version = "2025-2",
     compatibility_level = 2025,
 )
@@ -33,7 +33,7 @@ use_repo(
     "gcc_systemcore_win",
 )
 
-cfg = use_extension("@rules_bzlmodrio_toolchains//:extensions.bzl", "cfg")
+cfg = use_extension("@wpilib_toolchains//:extensions.bzl", "cfg")
 use_repo(cfg, "local_bookworm32", "local_bookworm64", "local_roborio", "local_rp_bookworm32", "local_systemcore")
 
 register_toolchains(

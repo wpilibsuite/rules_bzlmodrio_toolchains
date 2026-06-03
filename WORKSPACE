@@ -1,4 +1,4 @@
-workspace(name = "rules_bzlmodrio_toolchains")
+workspace(name = "wpilib_toolchains")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -20,11 +20,11 @@ load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
 
-load("@rules_bzlmodrio_toolchains//:maven_deps.bzl", "setup_legacy_setup_toolchains_dependencies")
+load("@wpilib_toolchains//:maven_deps.bzl", "setup_legacy_setup_toolchains_dependencies")
 
 setup_legacy_setup_toolchains_dependencies()
 
-load("@rules_bzlmodrio_toolchains//toolchains:load_toolchains.bzl", "load_toolchains")
+load("@wpilib_toolchains//toolchains:load_toolchains.bzl", "load_toolchains")
 
 load_toolchains()
 

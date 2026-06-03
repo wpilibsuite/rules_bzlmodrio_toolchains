@@ -1,6 +1,6 @@
-bazel_dep(name = "rules_bzlmodrio_toolchains", version = "")
+bazel_dep(name = "wpilib_toolchains", version = "")
 local_path_override(
-    module_name = "rules_bzlmodrio_toolchains",
+    module_name = "wpilib_toolchains",
     path = "..",
 )
 
