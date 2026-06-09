@@ -9,27 +9,27 @@ build --test_env=LD_LIBRARY_PATH=.
 build --test_env=DYLD_LIBRARY_PATH=.
 
 # roborio
-build:roborio --platforms=@rules_bzlmodrio_toolchains//platforms/roborio
+build:roborio --platforms=@wpilib_toolchains//platforms/roborio
 build:roborio --build_tag_filters=-no-roborio
 build:roborio --platform_suffix=roborio
 
 # systemcore
-build:systemcore --platforms=@rules_bzlmodrio_toolchains//platforms/systemcore
+build:systemcore --platforms=@wpilib_toolchains//platforms/systemcore
 build:systemcore --build_tag_filters=-no-systemcore
 build:systemcore --platform_suffix=systemcore
 
 # bookworm32
-build:bookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm32
+build:bookworm32 --platforms=@wpilib_toolchains//platforms/bookworm32
 build:bookworm32 --build_tag_filters=-no-bookworm32
 build:bookworm32 --platform_suffix=bookworm32
 
 # bookworm64
-build:bookworm64 --platforms=@rules_bzlmodrio_toolchains//platforms/bookworm64
+build:bookworm64 --platforms=@wpilib_toolchains//platforms/bookworm64
 build:bookworm64 --build_tag_filters=-no-bookworm64
 build:bookworm64 --platform_suffix=bookworm64
 
 # rpbookworm32
-build:rpbookworm32 --platforms=@rules_bzlmodrio_toolchains//platforms/rpbookworm32
+build:rpbookworm32 --platforms=@wpilib_toolchains//platforms/rpbookworm32
 build:rpbookworm32 --build_tag_filters=-no-rpbookworm32
 build:rpbookworm32 --platform_suffix=rpbookworm32
 

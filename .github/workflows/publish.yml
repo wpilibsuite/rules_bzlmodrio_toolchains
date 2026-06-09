@@ -17,14 +17,14 @@ jobs:
     # Checkout repository
     - uses: actions/checkout@v4
       with:
-        path: rules/rules_bzlmodrio_toolchains
+        path: rules/wpilib_toolchains
 
     - name: Create Archive
-      run: git archive HEAD --format=tar.gz --output="rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz"
-      working-directory: rules/rules_bzlmodrio_toolchains
+      run: git archive HEAD --format=tar.gz --output="wpilib_toolchains-${GITHUB_REF_NAME}.tar.gz"
+      working-directory: rules/wpilib_toolchains
 
     - name: Setup archive name
-      run: echo "ARCHIVE_NAME=rules/rules_bzlmodrio_toolchains/rules_bzlmodrio_toolchains-${GITHUB_REF_NAME}.tar.gz" >> "$GITHUB_ENV"
+      run: echo "ARCHIVE_NAME=rules/wpilib_toolchains/wpilib_toolchains-${GITHUB_REF_NAME}.tar.gz" >> "$GITHUB_ENV"
 
     - name: Release
       uses: softprops/action-gh-release@v2
