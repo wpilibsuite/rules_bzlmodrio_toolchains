@@ -164,7 +164,7 @@
     },
     "//:maven_deps.bzl%deps": {
       "general": {
-        "bzlTransitiveDigest": "UDpMvfIHsQ2YT9NJS5QZyWct52Q/MyddC1p8Gp8LPEo=",
+        "bzlTransitiveDigest": "Sk+/mTM36pWz0s/YTzC9sdvzA7Da7+Xm6PNL/xvSIQs=",
         "usagesDigest": "KBuFCXsLin1OudOzlcj5RN0tZXKU35PTs4wGBAmu490=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -260,21 +260,21 @@
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_rp_bookworm32_macosarm": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-raspi-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "eca6d22a02f0a8b18723fadde0ef82ee2f31f20be8d258e4dbe8faed055547c7",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
           "gcc_roborio_macos": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
               "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/cortexa9_vfpv3-roborio-academic-2025-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
               "sha256": "02d412a98ccec9dbb410975513b388304ff9b475c74450fe42bf497b5400212b",
+              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
+            }
+          },
+          "gcc_rp_bookworm32_macosarm": {
+            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+            "ruleClassName": "http_archive",
+            "attributes": {
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-raspi-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
+              "sha256": "eca6d22a02f0a8b18723fadde0ef82ee2f31f20be8d258e4dbe8faed055547c7",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
