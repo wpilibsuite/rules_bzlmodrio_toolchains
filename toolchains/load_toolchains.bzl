@@ -47,7 +47,7 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_systemcore",
-        extra_defines = ["-D__FRC_SYSTEMCORE__=1"],
+        extra_defines = ["-D__FIRST_SYSTEMCORE__=1"],
         bin_subfolder = "bookworm/bin",
         bin_prefix = "aarch64-bookworm-linux-gnu-",
         sysroot_subfolder = "bookworm/aarch64-linux-gnu/sysroot",
