@@ -1,27 +1,27 @@
 constraint_setting(
-    name = "is_bookworm32",
+    name = "is_trixie64",
     default_constraint_value = ":false",
 )
 
 constraint_value(
     name = "true",
-    constraint_setting = ":is_bookworm32",
+    constraint_setting = ":is_trixie64",
     visibility = ["//visibility:public"],
 )
 
 constraint_value(
     name = "false",
-    constraint_setting = ":is_bookworm32",
+    constraint_setting = ":is_trixie64",
 )
 
 config_setting(
-    name = "bookworm32",
+    name = "trixie64",
     constraint_values = [":true"],
     visibility = ["//visibility:public"],
 )
 
 config_setting(
-    name = "bookworm32_debug",
+    name = "trixie64_debug",
     constraint_values = [":true"],
     values = {
         "compilation_mode": "dbg",

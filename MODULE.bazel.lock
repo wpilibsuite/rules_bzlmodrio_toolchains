@@ -79,38 +79,27 @@
   "moduleExtensions": {
     "//:extensions.bzl%cfg": {
       "general": {
-        "bzlTransitiveDigest": "64gwTT5DeSYTRmXP+3KaPzJ9fLcTftsrKXSLBuzYoic=",
-        "usagesDigest": "HmdfES5eeB0YjHsaSk7A1PjnrUpMfwvzb9s7qQF7V2E=",
+        "bzlTransitiveDigest": "7+jjVqIKOBnJvkLZZ/pGczoLadTAQhwePHKVSHG7WVc=",
+        "usagesDigest": "OKYDkepcO9pE5e6iGCkcGDp9LGYsehVfOF2PI+PLcF8=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
-          "local_roborio": {
+          "local_systemcore_debug": {
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "bin_subfolder": "roborio-academic/bin",
-              "bin_prefix": "arm-frc2025-linux-gnueabi-",
-              "sysroot_subfolder": "roborio-academic/arm-nilrt-linux-gnueabi/sysroot",
-              "cxx_version": "12",
-              "target_cpu": "armv7",
-              "target_system_name": "arm-nilrt-linux-gnueabi",
-              "sysroot_include_folder": "arm-nilrt-linux-gnueabi",
-              "repo_shortname": "roborio"
-            }
-          },
-          "local_rp_bookworm32": {
-            "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
-            "ruleClassName": "configure_cross_compiler",
-            "attributes": {
-              "bin_subfolder": "raspi-bookworm/bin",
-              "bin_prefix": "armv6-bookworm-linux-gnueabihf-",
-              "sysroot_subfolder": "raspi-bookworm/arm-linux-gnueabihf/sysroot",
-              "cxx_version": "12",
-              "target_cpu": "armv7",
-              "target_system_name": "arm-linux-gnueabihf",
-              "sysroot_include_folder": "arm-linux-gnueabihf",
-              "repo_shortname": "rp_bookworm32"
+              "extra_defines": [
+                "-D__FIRST_SYSTEMCORE__=1"
+              ],
+              "bin_subfolder": "systemcore/bin",
+              "bin_prefix": "aarch64-systemcore2027-linux-gnu-",
+              "sysroot_subfolder": "systemcore/aarch64-linux-gnu/sysroot",
+              "cxx_version": "14",
+              "target_cpu": "armv8a",
+              "target_system_name": "aarch64-linux-gnu",
+              "sysroot_include_folder": "aarch64-linux-gnu",
+              "repo_shortname": "systemcore_debug"
             }
           },
           "local_systemcore": {
@@ -120,42 +109,28 @@
               "extra_defines": [
                 "-D__FIRST_SYSTEMCORE__=1"
               ],
-              "bin_subfolder": "bookworm/bin",
-              "bin_prefix": "aarch64-bookworm-linux-gnu-",
-              "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
-              "cxx_version": "12",
+              "bin_subfolder": "systemcore/bin",
+              "bin_prefix": "aarch64-systemcore2027-linux-gnu-",
+              "sysroot_subfolder": "systemcore/aarch64-linux-gnu/sysroot",
+              "cxx_version": "14",
               "target_cpu": "armv8a",
               "target_system_name": "aarch64-linux-gnu",
               "sysroot_include_folder": "aarch64-linux-gnu",
               "repo_shortname": "systemcore"
             }
           },
-          "local_bookworm64": {
+          "local_trixie64": {
             "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "bin_subfolder": "bookworm/bin",
-              "bin_prefix": "aarch64-bookworm-linux-gnu-",
-              "sysroot_subfolder": "bookworm/aarch64-linux-gnu/sysroot",
-              "cxx_version": "12",
+              "bin_subfolder": "trixie/bin",
+              "bin_prefix": "aarch64-trixie-linux-gnu-",
+              "sysroot_subfolder": "trixie/aarch64-linux-gnu/sysroot",
+              "cxx_version": "14",
               "target_cpu": "armv8a",
               "target_system_name": "aarch64-linux-gnu",
               "sysroot_include_folder": "aarch64-linux-gnu",
-              "repo_shortname": "bookworm64"
-            }
-          },
-          "local_bookworm32": {
-            "bzlFile": "@@//toolchains:configure_cross_compiler.bzl",
-            "ruleClassName": "configure_cross_compiler",
-            "attributes": {
-              "bin_subfolder": "bookworm/bin",
-              "bin_prefix": "armv7-bookworm-linux-gnueabihf-",
-              "sysroot_subfolder": "bookworm/arm-linux-gnueabihf/sysroot",
-              "cxx_version": "12",
-              "target_cpu": "armv7",
-              "target_system_name": "arm-linux-gnueabihf",
-              "sysroot_include_folder": "arm-linux-gnueabihf",
-              "repo_shortname": "bookworm32"
+              "repo_shortname": "trixie64"
             }
           }
         },
@@ -164,54 +139,81 @@
     },
     "//:maven_deps.bzl%deps": {
       "general": {
-        "bzlTransitiveDigest": "Sk+/mTM36pWz0s/YTzC9sdvzA7Da7+Xm6PNL/xvSIQs=",
-        "usagesDigest": "KBuFCXsLin1OudOzlcj5RN0tZXKU35PTs4wGBAmu490=",
+        "bzlTransitiveDigest": "6KjgRDc59qsuFPzHhvG2m3Tt4AgNFS2SfP4KX8wt7uQ=",
+        "usagesDigest": "/rtOf6uNSjEoP0OY8tQNa1X5sVjg0BMG0QuR/NQ2hqo=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
+          "gcc_trixie64_macosarm": {
+            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+            "ruleClassName": "http_archive",
+            "attributes": {
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-arm64-apple-darwin-Toolchain-14.3.0.tgz",
+              "sha256": "6d39e865ecb141027b365f6b176101028bf3793c744768fd324c78e7333acbb6",
+              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
+            }
+          },
+          "gcc_trixie64_linuxaarch64": {
+            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+            "ruleClassName": "http_archive",
+            "attributes": {
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "6b93174a00d8affeb7325a69da1e2e7209dc8edf9b5f5467189972040797b7ac",
+              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
+            }
+          },
+          "gcc_systemcore_debug_macos": {
+            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+            "ruleClassName": "http_archive",
+            "attributes": {
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-debug-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz",
+              "sha256": "003f0b6e752a9d177dfa45b614c012e911a2a92782189501c19a635d7d8899c1",
+              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
+            }
+          },
+          "gcc_trixie64_win": {
+            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+            "ruleClassName": "http_archive",
+            "attributes": {
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-x86_64-w64-mingw32-Toolchain-14.3.0.tgz",
+              "sha256": "9fffe71e7f3303fed7bdabfb7418cdc91c78a09466cccb0982bb0430d5ef581d",
+              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
+            }
+          },
           "gcc_systemcore_macos": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "6900a02b447d89fa31e7872071c1264b20188cb0c2456a634706bf884f3016ea",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz",
+              "sha256": "b63b5b2165ea81686c05e2abe483b02293a98bfd6ce72690d74c864833028dbc",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_bookworm32_macos": {
+          "gcc_systemcore_debug_win": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "2c0dd7352edf13f73bc802690876bf77e353265afad0acf677b1cff0cf62c7b0",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-debug-2027-x86_64-w64-mingw32-Toolchain-14.3.0.tgz",
+              "sha256": "5c1ad97f9174914229b7bb0dda36a995ae81d32d65e6f3a9bfcf4f122a94ecd1",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_bookworm32_linux": {
+          "gcc_systemcore_debug_linux": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz",
-              "sha256": "1dbb38120fd37cf5b69447cb93cb5c488b2a56bec72db4edcb3fa92ad3881b05",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-debug-2027-x86_64-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "ce8c7bea554d48cef44e2cfcf84591ed5824f3cdb4107ce5707a6fdae7452fd2",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_bookworm32_win": {
+          "gcc_systemcore_debug_linuxaarch64": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip",
-              "sha256": "85f75e41ec6cdee80ac4abc5cb2f1d235de67611663ecf6f69a64d05ba3591ef",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_rp_bookworm32_win": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-raspi-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip",
-              "sha256": "23c1c6434e761b6cc79e8622b1bcd575030a689801870ff795190f718d7fdc80",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-debug-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "7dc8d930586cc2de2e6c8288a706146d419e6072573632a9a3ac91b693b45172",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
@@ -219,17 +221,8 @@
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz",
-              "sha256": "7682bac991f106627ce6bd38c1f4dd552931700f3aee73534b4c10f119ad2899",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_rp_bookworm32_macos": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-raspi-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "f2dec8a3d9b8ccf30087454dbf4fcff0fd261f3a2a3f9cf08729b17d1ceb6101",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-2027-x86_64-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "992d4f2037762588c062f5b22f282b92b9143a2e8cb39a2027e67249c8ed5bea",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
@@ -237,89 +230,26 @@
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "4082238f6c726c9105cd85c52cfea80349ac57737e6a3915aa896246a201a5b7",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-2027-arm64-apple-darwin-Toolchain-14.3.0.tgz",
+              "sha256": "12a3b4feaf48b6567b1b85274b856b423103035c297cd50b31b31e1b74a275c8",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_bookworm64_linux": {
+          "gcc_systemcore_debug_macosarm": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz",
-              "sha256": "7682bac991f106627ce6bd38c1f4dd552931700f3aee73534b4c10f119ad2899",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-debug-2027-arm64-apple-darwin-Toolchain-14.3.0.tgz",
+              "sha256": "103cf2b9fcf32c4c264570a0719c975dc597219bb41f926e55a4ed24babe2733",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_rp_bookworm32_linux": {
+          "gcc_trixie64_linux": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-raspi-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz",
-              "sha256": "2ab8530d9cb7c00d148ad1a4ccc027d91d02f5f83da8077a1604dff9547d9c4d",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_roborio_macos": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/cortexa9_vfpv3-roborio-academic-2025-x86_64-apple-darwin-Toolchain-12.1.0.tgz",
-              "sha256": "02d412a98ccec9dbb410975513b388304ff9b475c74450fe42bf497b5400212b",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_rp_bookworm32_macosarm": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-raspi-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "eca6d22a02f0a8b18723fadde0ef82ee2f31f20be8d258e4dbe8faed055547c7",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_roborio_win": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/cortexa9_vfpv3-roborio-academic-2025-x86_64-w64-mingw32-Toolchain-12.1.0.zip",
-              "sha256": "7f15de72cdacc738c3c0d33292c869a5785ad09b87478cf6af38daf4aab92b68",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_bookworm64_win": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip",
-              "sha256": "258d0209ec43302cd2b9e4ce7808f163db14a66a85383bd1880c4083f09dd22f",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_bookworm64_macos": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "6900a02b447d89fa31e7872071c1264b20188cb0c2456a634706bf884f3016ea",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_bookworm64_macosarm": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "4082238f6c726c9105cd85c52cfea80349ac57737e6a3915aa896246a201a5b7",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
-          "gcc_roborio_macosarm": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/cortexa9_vfpv3-roborio-academic-2025-arm64-apple-darwin-Toolchain-12.1.0.tgz",
-              "sha256": "f55024a44d0d3243f4f88229baeb883e386193c99b18afdcbcefd12f6d913e35",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-x86_64-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "76dd88aff88f2fda1ea0bfdb996e32a8a689c929dc492b874d5abd9a7c3ee06a",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
@@ -327,26 +257,26 @@
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/arm64-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip",
-              "sha256": "258d0209ec43302cd2b9e4ce7808f163db14a66a85383bd1880c4083f09dd22f",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-2027-x86_64-w64-mingw32-Toolchain-14.3.0.tgz",
+              "sha256": "337f0bc3d1d0ecc7cfdb859c0994cbba05456b8344e67aaf56cabbe324fab4aa",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_bookworm32_macosarm": {
+          "gcc_systemcore_linuxaarch64": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/armhf-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz",
-              "sha256": "cbbfef87c1004923a01697424d6904097ff118efe0709ccd453544088693d5ab",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "91eb185ee07efa58b16d03076e1d96afb3b551a3cc80f7195b573a3427790b3b",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_roborio_linux": {
+          "gcc_trixie64_macos": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2025-2/cortexa9_vfpv3-roborio-academic-2025-x86_64-linux-gnu-Toolchain-12.1.0.tgz",
-              "sha256": "e1aea36b35c48d81e146a12a4b7428af051e525fac18c85a53c7be98339cce9f",
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz",
+              "sha256": "e67b153e7cacf5dad7be349787f20a609085bbb00e61491783571f431fda991c",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           }
