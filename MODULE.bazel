@@ -1,7 +1,6 @@
 module(
     name = "wpilib_toolchains",
-    version = "2025-2",
-    compatibility_level = 2025,
+    version = "2027-1",
 )
 
 bazel_dep(name = "platforms", version = "0.0.9")
@@ -11,45 +10,34 @@ bazel_dep(name = "bazel_skylib", version = "1.6.1")
 deps = use_extension("//:maven_deps.bzl", "deps")
 use_repo(
     deps,
-    "gcc_bookworm32_linux",
-    "gcc_bookworm32_macos",
-    "gcc_bookworm32_macosarm",
-    "gcc_bookworm32_win",
-    "gcc_bookworm64_linux",
-    "gcc_bookworm64_macos",
-    "gcc_bookworm64_macosarm",
-    "gcc_bookworm64_win",
-    "gcc_roborio_linux",
-    "gcc_roborio_macos",
-    "gcc_roborio_macosarm",
-    "gcc_roborio_win",
-    "gcc_rp_bookworm32_linux",
-    "gcc_rp_bookworm32_macos",
-    "gcc_rp_bookworm32_macosarm",
-    "gcc_rp_bookworm32_win",
+    "gcc_systemcore_debug_linux",
+    "gcc_systemcore_debug_linuxaarch64",
+    "gcc_systemcore_debug_macos",
+    "gcc_systemcore_debug_macosarm",
+    "gcc_systemcore_debug_win",
     "gcc_systemcore_linux",
+    "gcc_systemcore_linuxaarch64",
     "gcc_systemcore_macos",
     "gcc_systemcore_macosarm",
     "gcc_systemcore_win",
+    "gcc_trixie64_linux",
+    "gcc_trixie64_linuxaarch64",
+    "gcc_trixie64_macos",
+    "gcc_trixie64_macosarm",
+    "gcc_trixie64_win",
 )
 
 cfg = use_extension("@wpilib_toolchains//:extensions.bzl", "cfg")
-use_repo(cfg, "local_bookworm32", "local_bookworm64", "local_roborio", "local_rp_bookworm32", "local_systemcore")
+use_repo(cfg, "local_systemcore", "local_systemcore_debug", "local_trixie64")
 
 register_toolchains(
-    "@local_bookworm32//:macos",
-    "@local_bookworm32//:linux",
-    "@local_bookworm32//:windows",
-    "@local_bookworm64//:macos",
-    "@local_bookworm64//:linux",
-    "@local_bookworm64//:windows",
-    "@local_rp_bookworm32//:macos",
-    "@local_rp_bookworm32//:linux",
-    "@local_rp_bookworm32//:windows",
-    "@local_roborio//:macos",
-    "@local_roborio//:linux",
-    "@local_roborio//:windows",
+    "@local_trixie64//:macos",
+    "@local_trixie64//:linux",
+    "@local_trixie64//:windows",
     "@local_systemcore//:macos",
     "@local_systemcore//:linux",
     "@local_systemcore//:windows",
+    "@local_systemcore_debug//:macos",
+    "@local_systemcore_debug//:linux",
+    "@local_systemcore_debug//:windows",
 )

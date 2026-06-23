@@ -33,7 +33,10 @@ def configure_cross_compiler_impl(repository_ctx):
         else:
             substitutions["{compiler_repo}"] = "gcc_{}_macos".format(repository_ctx.attr.repo_shortname)
     elif repository_ctx.os.name == "linux":
-        substitutions["{compiler_repo}"] = "gcc_{}_linux".format(repository_ctx.attr.repo_shortname)
+        if repository_ctx.os.arch == "aarch64":
+            substitutions["{compiler_repo}"] = "gcc_{}_linuxaarch64".format(repository_ctx.attr.repo_shortname)
+        else:
+            substitutions["{compiler_repo}"] = "gcc_{}_linux".format(repository_ctx.attr.repo_shortname)
     else:
         fail("Unknown os " + repository_ctx.os.name)
 

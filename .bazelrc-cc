@@ -40,27 +40,12 @@ build:macos --cxxopt=-Wno-error=deprecated-anon-enum-enum-conversion
 build:macos --cxxopt=-Wno-error=inconsistent-missing-override
 build:macos --cxxopt=-Wno-error=overloaded-virtual
 
-# roborio
-build:roborio --incompatible_enable_cc_toolchain_resolution
-build:roborio --copt=-std=c++20
-build:roborio --features=compiler_param_file
-
 # systemcore
 build:systemcore --incompatible_enable_cc_toolchain_resolution
 build:systemcore --copt=-std=c++20
 build:systemcore --features=compiler_param_file
 
-# bookworm32
-build:bookworm32 --incompatible_enable_cc_toolchain_resolution
-build:bookworm32 --copt=-std=c++20
-build:bookworm32 --features=compiler_param_file
-
-# bookworm64
-build:bookworm64 --incompatible_enable_cc_toolchain_resolution
-build:bookworm64 --copt=-std=c++20
-build:bookworm64 --features=compiler_param_file
-
-# rpbookworm32
-build:rpbookworm32 --incompatible_enable_cc_toolchain_resolution
-build:rpbookworm32 --copt=-std=c++20
-build:rpbookworm32 --features=compiler_param_file
+# trixie64
+build:trixie64 --incompatible_enable_cc_toolchain_resolution
+build:trixie64 --copt=-std=c++20
+build:trixie64 --features=compiler_param_file

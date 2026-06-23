@@ -3,11 +3,9 @@ load("@bazel_skylib//lib:selects.bzl", "selects")
 selects.config_setting_group(
     name = "is_cross_compiler",
     match_any = [
-        "//constraints/is_roborio:roborio",
         "//constraints/is_systemcore:systemcore",
-        "//constraints/is_bookworm32:bookworm32",
-        "//constraints/is_bookworm64:bookworm64",
-        "//constraints/is_rpbookworm32:rpbookworm32",
+        "//constraints/is_systemcore_debug:systemcore_debug",
+        "//constraints/is_trixie64:trixie64",
     ],
 )
 

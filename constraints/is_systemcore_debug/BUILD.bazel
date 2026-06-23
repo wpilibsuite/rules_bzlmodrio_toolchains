@@ -1,0 +1,21 @@
+constraint_setting(
+    name = "is_systemcore_debug",
+    default_constraint_value = ":false",
+)
+
+constraint_value(
+    name = "true",
+    constraint_setting = ":is_systemcore_debug",
+    visibility = ["//visibility:public"],
+)
+
+constraint_value(
+    name = "false",
+    constraint_setting = ":is_systemcore_debug",
+)
+
+config_setting(
+    name = "systemcore_debug",
+    constraint_values = [":true"],
+    visibility = ["//visibility:public"],
+)

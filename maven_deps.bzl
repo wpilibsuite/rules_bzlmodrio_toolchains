@@ -9,29 +9,24 @@ filegroup_all = """filegroup(
 """
 
 def __setup_toolchains_dependencies(mctx):
-    release = "v2025-2"
+    release = "v2027-1"
 
     HASHES = {
-        "gcc_bookworm32_linux": ("armhf-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz", "1dbb38120fd37cf5b69447cb93cb5c488b2a56bec72db4edcb3fa92ad3881b05"),
-        "gcc_bookworm32_macos": ("armhf-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz", "2c0dd7352edf13f73bc802690876bf77e353265afad0acf677b1cff0cf62c7b0"),
-        "gcc_bookworm32_macosarm": ("armhf-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz", "cbbfef87c1004923a01697424d6904097ff118efe0709ccd453544088693d5ab"),
-        "gcc_bookworm32_win": ("armhf-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip", "85f75e41ec6cdee80ac4abc5cb2f1d235de67611663ecf6f69a64d05ba3591ef"),
-        "gcc_bookworm64_linux": ("arm64-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz", "7682bac991f106627ce6bd38c1f4dd552931700f3aee73534b4c10f119ad2899"),
-        "gcc_bookworm64_macos": ("arm64-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz", "6900a02b447d89fa31e7872071c1264b20188cb0c2456a634706bf884f3016ea"),
-        "gcc_bookworm64_macosarm": ("arm64-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz", "4082238f6c726c9105cd85c52cfea80349ac57737e6a3915aa896246a201a5b7"),
-        "gcc_bookworm64_win": ("arm64-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip", "258d0209ec43302cd2b9e4ce7808f163db14a66a85383bd1880c4083f09dd22f"),
-        "gcc_roborio_linux": ("cortexa9_vfpv3-roborio-academic-2025-x86_64-linux-gnu-Toolchain-12.1.0.tgz", "e1aea36b35c48d81e146a12a4b7428af051e525fac18c85a53c7be98339cce9f"),
-        "gcc_roborio_macos": ("cortexa9_vfpv3-roborio-academic-2025-x86_64-apple-darwin-Toolchain-12.1.0.tgz", "02d412a98ccec9dbb410975513b388304ff9b475c74450fe42bf497b5400212b"),
-        "gcc_roborio_macosarm": ("cortexa9_vfpv3-roborio-academic-2025-arm64-apple-darwin-Toolchain-12.1.0.tgz", "f55024a44d0d3243f4f88229baeb883e386193c99b18afdcbcefd12f6d913e35"),
-        "gcc_roborio_win": ("cortexa9_vfpv3-roborio-academic-2025-x86_64-w64-mingw32-Toolchain-12.1.0.zip", "7f15de72cdacc738c3c0d33292c869a5785ad09b87478cf6af38daf4aab92b68"),
-        "gcc_rp_bookworm32_linux": ("armhf-raspi-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz", "2ab8530d9cb7c00d148ad1a4ccc027d91d02f5f83da8077a1604dff9547d9c4d"),
-        "gcc_rp_bookworm32_macos": ("armhf-raspi-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz", "f2dec8a3d9b8ccf30087454dbf4fcff0fd261f3a2a3f9cf08729b17d1ceb6101"),
-        "gcc_rp_bookworm32_macosarm": ("armhf-raspi-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz", "eca6d22a02f0a8b18723fadde0ef82ee2f31f20be8d258e4dbe8faed055547c7"),
-        "gcc_rp_bookworm32_win": ("armhf-raspi-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip", "23c1c6434e761b6cc79e8622b1bcd575030a689801870ff795190f718d7fdc80"),
-        "gcc_systemcore_linux": ("arm64-bookworm-2025-x86_64-linux-gnu-Toolchain-12.2.0.tgz", "7682bac991f106627ce6bd38c1f4dd552931700f3aee73534b4c10f119ad2899"),
-        "gcc_systemcore_macos": ("arm64-bookworm-2025-x86_64-apple-darwin-Toolchain-12.2.0.tgz", "6900a02b447d89fa31e7872071c1264b20188cb0c2456a634706bf884f3016ea"),
-        "gcc_systemcore_macosarm": ("arm64-bookworm-2025-arm64-apple-darwin-Toolchain-12.2.0.tgz", "4082238f6c726c9105cd85c52cfea80349ac57737e6a3915aa896246a201a5b7"),
-        "gcc_systemcore_win": ("arm64-bookworm-2025-x86_64-w64-mingw32-Toolchain-12.2.0.zip", "258d0209ec43302cd2b9e4ce7808f163db14a66a85383bd1880c4083f09dd22f"),
+        "gcc_systemcore_debug_linux": ("arm64-systemcore-debug-2027-x86_64-linux-gnu-Toolchain-14.3.0.tgz", "ce8c7bea554d48cef44e2cfcf84591ed5824f3cdb4107ce5707a6fdae7452fd2"),
+        "gcc_systemcore_debug_linuxaarch64": ("arm64-systemcore-debug-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz", "7dc8d930586cc2de2e6c8288a706146d419e6072573632a9a3ac91b693b45172"),
+        "gcc_systemcore_debug_macos": ("arm64-systemcore-debug-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz", "003f0b6e752a9d177dfa45b614c012e911a2a92782189501c19a635d7d8899c1"),
+        "gcc_systemcore_debug_macosarm": ("arm64-systemcore-debug-2027-arm64-apple-darwin-Toolchain-14.3.0.tgz", "103cf2b9fcf32c4c264570a0719c975dc597219bb41f926e55a4ed24babe2733"),
+        "gcc_systemcore_debug_win": ("arm64-systemcore-debug-2027-x86_64-w64-mingw32-Toolchain-14.3.0.tgz", "5c1ad97f9174914229b7bb0dda36a995ae81d32d65e6f3a9bfcf4f122a94ecd1"),
+        "gcc_systemcore_linux": ("arm64-systemcore-2027-x86_64-linux-gnu-Toolchain-14.3.0.tgz", "992d4f2037762588c062f5b22f282b92b9143a2e8cb39a2027e67249c8ed5bea"),
+        "gcc_systemcore_linuxaarch64": ("arm64-systemcore-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz", "91eb185ee07efa58b16d03076e1d96afb3b551a3cc80f7195b573a3427790b3b"),
+        "gcc_systemcore_macos": ("arm64-systemcore-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz", "b63b5b2165ea81686c05e2abe483b02293a98bfd6ce72690d74c864833028dbc"),
+        "gcc_systemcore_macosarm": ("arm64-systemcore-2027-arm64-apple-darwin-Toolchain-14.3.0.tgz", "12a3b4feaf48b6567b1b85274b856b423103035c297cd50b31b31e1b74a275c8"),
+        "gcc_systemcore_win": ("arm64-systemcore-2027-x86_64-w64-mingw32-Toolchain-14.3.0.tgz", "337f0bc3d1d0ecc7cfdb859c0994cbba05456b8344e67aaf56cabbe324fab4aa"),
+        "gcc_trixie64_linux": ("arm64-trixie-2027-x86_64-linux-gnu-Toolchain-14.3.0.tgz", "76dd88aff88f2fda1ea0bfdb996e32a8a689c929dc492b874d5abd9a7c3ee06a"),
+        "gcc_trixie64_linuxaarch64": ("arm64-trixie-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz", "6b93174a00d8affeb7325a69da1e2e7209dc8edf9b5f5467189972040797b7ac"),
+        "gcc_trixie64_macos": ("arm64-trixie-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz", "e67b153e7cacf5dad7be349787f20a609085bbb00e61491783571f431fda991c"),
+        "gcc_trixie64_macosarm": ("arm64-trixie-2027-arm64-apple-darwin-Toolchain-14.3.0.tgz", "6d39e865ecb141027b365f6b176101028bf3793c744768fd324c78e7333acbb6"),
+        "gcc_trixie64_win": ("arm64-trixie-2027-x86_64-w64-mingw32-Toolchain-14.3.0.tgz", "9fffe71e7f3303fed7bdabfb7418cdc91c78a09466cccb0982bb0430d5ef581d"),
     }
 
     for archive_name, (release_type, hash) in HASHES.items():

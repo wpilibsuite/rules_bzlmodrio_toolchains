@@ -1,9 +1,9 @@
 platform(
-    name = "bookworm64",
+    name = "trixie64",
     constraint_values = [
         "@platforms//os:linux",
         "@platforms//cpu:arm64",
-        "//constraints/is_bookworm64:true",
+        "//constraints/is_trixie64:true",
     ],
     visibility = ["//visibility:public"],
 )
