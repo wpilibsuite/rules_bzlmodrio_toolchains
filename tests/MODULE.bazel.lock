@@ -1635,7 +1635,7 @@
     },
     "@@wpilib_toolchains~//:extensions.bzl%cfg": {
       "general": {
-        "bzlTransitiveDigest": "7+jjVqIKOBnJvkLZZ/pGczoLadTAQhwePHKVSHG7WVc=",
+        "bzlTransitiveDigest": "4EcQ5gXuzBG/F4iFNA3PnbuyuHwxHSMo3YEgjMR8dHY=",
         "usagesDigest": "pRHzX4asUrFL/buyNA06VqOolZmf21XXe4+5dyE6Gd4=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -1645,9 +1645,7 @@
             "bzlFile": "@@wpilib_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "extra_defines": [
-                "-D__FIRST_SYSTEMCORE__=1"
-              ],
+              "extra_defines": [],
               "bin_subfolder": "systemcore/bin",
               "bin_prefix": "aarch64-systemcore2027-linux-gnu-",
               "sysroot_subfolder": "systemcore/aarch64-linux-gnu/sysroot",
@@ -1662,9 +1660,7 @@
             "bzlFile": "@@wpilib_toolchains~//toolchains:configure_cross_compiler.bzl",
             "ruleClassName": "configure_cross_compiler",
             "attributes": {
-              "extra_defines": [
-                "-D__FIRST_SYSTEMCORE__=1"
-              ],
+              "extra_defines": [],
               "bin_subfolder": "systemcore/bin",
               "bin_prefix": "aarch64-systemcore2027-linux-gnu-",
               "sysroot_subfolder": "systemcore/aarch64-linux-gnu/sysroot",
@@ -1695,7 +1691,7 @@
     },
     "@@wpilib_toolchains~//:maven_deps.bzl%deps": {
       "general": {
-        "bzlTransitiveDigest": "6KjgRDc59qsuFPzHhvG2m3Tt4AgNFS2SfP4KX8wt7uQ=",
+        "bzlTransitiveDigest": "9jdeLhJng3/drGSop7uc0s0tixiUdEY5OlTbEgcfqG0=",
         "usagesDigest": "EExD4a5G+ZOegL8Zkn5KtPyRw6y/E0E2vf+zRjyqqS8=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -1710,21 +1706,21 @@
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },
-          "gcc_trixie64_linuxaarch64": {
-            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-            "ruleClassName": "http_archive",
-            "attributes": {
-              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz",
-              "sha256": "6b93174a00d8affeb7325a69da1e2e7209dc8edf9b5f5467189972040797b7ac",
-              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
-            }
-          },
           "gcc_systemcore_debug_macos": {
             "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
             "ruleClassName": "http_archive",
             "attributes": {
               "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-systemcore-debug-2027-x86_64-apple-darwin-Toolchain-14.3.0.tgz",
               "sha256": "003f0b6e752a9d177dfa45b614c012e911a2a92782189501c19a635d7d8899c1",
+              "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
+            }
+          },
+          "gcc_trixie64_linuxaarch64": {
+            "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+            "ruleClassName": "http_archive",
+            "attributes": {
+              "url": "https://github.com/wpilibsuite/opensdk/releases/download/v2027-1/arm64-trixie-2027-aarch64-trixie-linux-gnu-Toolchain-14.3.0.tgz",
+              "sha256": "6b93174a00d8affeb7325a69da1e2e7209dc8edf9b5f5467189972040797b7ac",
               "build_file_content": "filegroup(\n    name = \"all\",\n    srcs = glob([\"**\"]),\n    visibility = [\"//visibility:public\"],\n)\n"
             }
           },

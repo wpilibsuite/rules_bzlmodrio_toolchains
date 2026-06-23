@@ -14,7 +14,7 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_systemcore",
-        extra_defines = ["-D__FIRST_SYSTEMCORE__=1"],
+        extra_defines = [],
         bin_subfolder = "systemcore/bin",
         bin_prefix = "aarch64-systemcore2027-linux-gnu-",
         sysroot_subfolder = "systemcore/aarch64-linux-gnu/sysroot",
@@ -26,7 +26,7 @@ def load_toolchains():
     )
     configure_cross_compiler(
         name = "local_systemcore_debug",
-        extra_defines = ["-D__FIRST_SYSTEMCORE__=1"],
+        extra_defines = [],
         bin_subfolder = "systemcore/bin",
         bin_prefix = "aarch64-systemcore2027-linux-gnu-",
         sysroot_subfolder = "systemcore/aarch64-linux-gnu/sysroot",
