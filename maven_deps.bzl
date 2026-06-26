@@ -38,6 +38,10 @@ def __setup_toolchains_dependencies(mctx):
             build_file_content = filegroup_all,
         )
 
+    return mctx.extension_metadata(
+        reproducible = True,
+    )
+
 deps = module_extension(
     __setup_toolchains_dependencies,
 )
