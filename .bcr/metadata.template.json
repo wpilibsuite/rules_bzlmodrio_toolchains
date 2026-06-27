@@ -1,13 +1,13 @@
 {
-  "homepage": "https://github.com/wpilibsuite/rules_bzlmodrio_toolchains",
+  "homepage": "https://github.com/wpilibsuite/bazel_wpilib_toolchains",
   "maintainers": [
     {
       "github": "pjreiniger",
       "name": "PJ Reiniger"
     },
     {
-      "github": "calcmogul",
-      "name": "Tyler Veness"
+      "github": "PeterJohnson",
+      "name": "Peter Johnson"
     },
     {
       "github": "AustinSchuh",
@@ -15,6 +15,6 @@
     }
   ],
   "repository": [
-    "github:wpilibsuite/rules_bzlmodrio_toolchains"
+    "github:wpilibsuite/bazel_wpilib_toolchains"
   ]
 }
