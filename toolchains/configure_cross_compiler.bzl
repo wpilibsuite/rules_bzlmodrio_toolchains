@@ -28,11 +28,13 @@ def configure_cross_compiler_impl(repository_ctx):
         substitutions["{arg_passthrough}"] = "%*"
         substitutions["{wrapper_extension}"] = ".bat"
     elif repository_ctx.os.name == "mac os x":
+        substitutions["{command_prefix}"] = "#!/bin/bash\n"
         if repository_ctx.os.arch == "aarch64":
             substitutions["{compiler_repo}"] = "gcc_{}_macosarm".format(repository_ctx.attr.repo_shortname)
         else:
             substitutions["{compiler_repo}"] = "gcc_{}_macos".format(repository_ctx.attr.repo_shortname)
     elif repository_ctx.os.name == "linux":
+        substitutions["{command_prefix}"] = "#!/bin/bash\n"
         if repository_ctx.os.arch == "aarch64":
             substitutions["{compiler_repo}"] = "gcc_{}_linuxaarch64".format(repository_ctx.attr.repo_shortname)
         else:
