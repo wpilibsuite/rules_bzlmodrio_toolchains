@@ -1,6 +1,6 @@
 module(
     name = "wpilib_toolchains",
-    version = "2027-1",
+    version = "2027-1.bcr1",
 )
 
 bazel_dep(name = "platforms", version = "0.0.9")
