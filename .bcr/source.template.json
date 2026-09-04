@@ -1,0 +1,5 @@
+{
+  "integrity": "",
+  "strip_prefix": "",
+  "url": "https://github.com/wpilibsuite/bazel_wpilib_toolchains/releases/download/{TAG}/wpilib_toolchains-{TAG}.tar.gz"
+}

@@ -1,0 +1,20 @@
+{
+  "homepage": "https://github.com/wpilibsuite/bazel_wpilib_toolchains",
+  "maintainers": [
+    {
+      "github": "pjreiniger",
+      "name": "PJ Reiniger"
+    },
+    {
+      "github": "PeterJohnson",
+      "name": "Peter Johnson"
+    },
+    {
+      "github": "AustinSchuh",
+      "name": "Austin Schuh"
+    }
+  ],
+  "repository": [
+    "github:wpilibsuite/bazel_wpilib_toolchains"
+  ]
+}

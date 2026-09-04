@@ -1,0 +1,20 @@
+matrix:
+  platform: ["ubuntu2004", "macos", "windows"]
+
+tasks:
+  verify_targets:
+    platform: ${{ platform }}
+    build_targets:
+    - "@wpilib_toolchains//..."
+
+bcr_test_module:
+  module_path: "tests"
+  matrix:
+    platform: ["ubuntu2004", "macos", "windows"]
+  tasks:
+    verify_targets:
+      platform: ${{ platform }}
+      build_targets:
+      - "//:main"
+      test_targets:
+      - "//:test"
